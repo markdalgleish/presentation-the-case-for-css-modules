@@ -1,0 +1,7 @@
+{
+  "name": "presentation-the-end-of-global-css",
+  "version": "0.0.0",
+  "dependencies": {
+    "prism": "gh-pages"
+  }
+}

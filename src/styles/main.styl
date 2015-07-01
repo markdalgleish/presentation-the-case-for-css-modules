@@ -1,0 +1,70 @@
+// New to Stylus? Check out http://learnboost.github.io/stylus
+// Use modern CSS thanks to Autoprefixer: https://github.com/ai/autoprefixer
+
+// Import CSS from "node_modules" and "bower_components"
+// thanks to Stylus' "import css" and "paths" options
+
+@import 'prism/themes/prism-okaidia.css'
+// Check out "bower_components/prism/themes/" for available themes
+
+li
+  font-family: didot, times new roman, serif
+  font-style: italic
+
+.avatar
+  width: 100px
+  border-radius: @width
+  .avatars &
+    display: inline-block
+    margin: 20px
+
+.seek-logo
+  background-image: url('../images/seek.svg')
+  width: 200px
+  height: 200px
+  background-size: auto 100%
+  margin-bottom: 40px
+  position: relative
+  left: 3px
+
+.static
+  background-size: contain
+  background-repeat: no-repeat
+  transform: none !important
+  &.bespoke-backdrop-active
+    opacity: 1
+
+.space
+  background-image: url('../images/space.jpg')
+  transform-origin: 50% 100%
+  &.bespoke-backdrop-active
+    transition: opacity 5s ease, transform 20s ease
+
+.chapter-13
+  background-image: url('../images/chapter-13.jpg')
+
+.css-zen-garden-0
+  background-image: url('../images/css-zen-garden-0.png')
+.css-zen-garden-1
+  background-image: url('../images/css-zen-garden-1.png')
+.css-zen-garden-2
+  background-image: url('../images/css-zen-garden-2.png')
+.css-zen-garden-3
+  background-image: url('../images/css-zen-garden-3.png')
+
+.initial-commit
+  background-image: url('../images/initial-commit.png')
+
+// Webpack logo stuff
+@import './webpack-logo.css'
+
+.webpack-logo
+  width: 200px
+  height: 200px
+  margin-top: -60px
+  margin-bottom: -48px
+  zoom: 3
+  transform: scale(.5)
+
+.logo
+  transform: rotateX(0deg)
