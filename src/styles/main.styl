@@ -20,10 +20,9 @@ li
 
 .seek-logo
   background-image: url('../images/seek.svg')
-  width: 200px
-  height: 200px
+  width: 300px
+  height: 300px
   background-size: auto 100%
-  margin-bottom: 40px
   position: relative
   left: 3px
 
@@ -42,6 +41,7 @@ li
 
 .chapter-13
   background-image: url('../images/chapter-13.jpg')
+  background-position: 50% 20%
 
 .css-zen-garden-0
   background-image: url('../images/css-zen-garden-0.png')
@@ -53,18 +53,172 @@ li
   background-image: url('../images/css-zen-garden-3.png')
 
 .initial-commit
+  background-color: white
   background-image: url('../images/initial-commit.png')
+
+.gulp-logo
+  background-image: url('../images/gulp-logo.jpg')
+  &.bespoke-backdrop-active
+    opacity: 1
+
+.sass-logo
+  background-image: url('../images/sass-logo.png')
+  &.bespoke-backdrop-active
+    opacity: 1
+
+.postcss-logo
+  background-image: url('../images/postcss-logo-dark.png')
+  &.bespoke-backdrop-active
+    opacity: 1
+
+.lego
+  background-image: url('../images/lego.gif')
+  &.bespoke-backdrop-active
+    opacity: .1
+
+[data-bespoke-backdrop="bem"]
+  color: black
+.bem
+  background-image: url('../images/bem.svg')
+  transform: translateZ(0) translateX(240px) translateY(-20px) scale(1)
+  transform-origin: 40% 50%
+  &.bespoke-backdrop-active
+    opacity: 1
+  &.bespoke-backdrop-active,
+  &.bespoke-backdrop-before
+    transform: translateZ(0) translateX(240px) translateY(-20px) scale(0.6)
+
+[data-bespoke-backdrop="jquery-ui-datepicker"]
+  h2
+    background: black
+    padding: 20px 18px 20px 30px
+.jquery-ui-datepicker
+  background-image: url('../images/jquery-ui-datepicker.png')
+  &.bespoke-backdrop-active
+    opacity: .5
+
+.react
+  background-image: url('../images/react.png')
+
+.bespoke-bullet.show
+  opacity: 1
+
+.circles
+  position: absolute
+  z-index: 1
+  width: 270px
+  height: 150px
+  top: 50%
+  left: 50%
+  margin-left: -135px
+  margin-top: -75px
+  &.circles--multiple
+    z-index: 0
+  div
+    transition: all 1s cubic-bezier(0.725, -0.365, 0.175, 1.000)
+    width: 150px
+    height: 150px
+    border-radius: 150px
+    position: absolute
+    top: 0
+    left: 50%
+    margin-left: -75px
+    &:after
+      display: block
+      width: 100%
+      text-align: center
+      color: #222
+      line-height: 150px
+      font-size: 30px
+  .css
+    z-index: 1
+    background: white
+    .show-css-and-js.bespoke-bullet-active &
+      transform: translateX(60px)
+    &:after
+      content: 'CSS'
+  .js
+    background: yellow
+    &:after
+      content: 'JS'
+    .show-css-and-js.bespoke-bullet-active &
+      transform: translateX(-60px)
+  .component
+    opacity: 0
+    transition: all .6s ease
+    border: 1px solid #888
+    background: #111
+    transform: scale(2.5)
+    z-index: -1
+    &:after
+      content: 'Component'
+      position: absolute
+      top: 0
+      color: #888
+      font-size: 14px
+      top: -48px
+    .show-component.bespoke-bullet-active &
+      opacity: 1
+
+.show-component-tree
+  transition: all 1.6s cubic-bezier(0.725, -0.365, 0.175, 1.000)
+  &.bespoke-bullet-active
+    transform: translateY(-150px) scale(0.3)
+
+.circles
+  transition: all 1s cubic-bezier(0.725, -0.365, 0.175, 1.000)
+
+.circles--multiple-0
+  transition-delay: .3s
+.circles--multiple-1
+  transition-delay: .4s
+.circles--multiple-2
+  transition-delay: .5s
+.circles--multiple-3
+  transition-delay: .6s
+.circles--multiple-4
+  transition-delay: .7s
+.circles--multiple-5
+  transition-delay: .8s
+.circles--multiple-6
+  transition-delay: .9s
+.circles--multiple-7
+  transition-delay: 1s
+
+.show-component-tree.bespoke-bullet-active
+  .circles--multiple-0
+    transform: translateY(500px)
+  .circles--multiple-1
+    transform: translateY(500px) translateX(-500px)
+  .circles--multiple-2
+    transform: translateY(500px) translateX(500px)
+  .circles--multiple-3
+    transform: translateY(1000px)
+  .circles--multiple-4
+    transform: translateY(1000px) translateX(-500px)
+  .circles--multiple-5
+    transform: translateY(1000px) translateX(-1000px)
+  .circles--multiple-6
+    transform: translateY(1000px) translateX(500px)
+  .circles--multiple-7
+    transform: translateY(1000px) translateX(1000px)
+
 
 // Webpack logo stuff
 @import './webpack-logo.css'
 
 .webpack-logo
+  position: absolute
+  top: 50%
+  left: 50%
   width: 200px
   height: 200px
-  margin-top: -60px
   margin-bottom: -48px
+  margin-left: -100px
+  margin-top: -110px
   zoom: 3
-  transform: scale(.5)
+  transform: scale(1)
+  opacity: 0.6
 
 .logo
   transform: rotateX(0deg)

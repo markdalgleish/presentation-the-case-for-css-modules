@@ -14,7 +14,7 @@ bespoke.from('article', [
   nebula(),
   keys(),
   touch(),
-  bullets('li, .bullet'),
+  bullets('ul:not(.no-bullets) li, .bullet'),
   backdrop(),
   scale(),
   hash(),
@@ -26,4 +26,3 @@ bespoke.from('article', [
 // debowerify: https://github.com/eugeneware/debowerify
 require('prism');
 require('prism/components/prism-jsx.js');
-
