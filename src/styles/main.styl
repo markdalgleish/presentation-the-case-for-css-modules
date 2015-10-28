@@ -55,6 +55,8 @@ li
 .initial-commit
   background-color: white
   background-image: url('../images/initial-commit.png')
+  background-position: 0 50%
+  transform-origin: 20% 30%
 
 .gulp-logo
   background-image: url('../images/gulp-logo.jpg')
@@ -80,13 +82,12 @@ li
   color: black
 .bem
   background-image: url('../images/bem.svg')
-  transform: translateZ(0) translateX(240px) translateY(-20px) scale(1)
-  transform-origin: 40% 50%
+  transform: translateZ(0) translateX(12%) translateY(-20px) scale(1)
   &.bespoke-backdrop-active
     opacity: 1
   &.bespoke-backdrop-active,
   &.bespoke-backdrop-before
-    transform: translateZ(0) translateX(240px) translateY(-20px) scale(0.6)
+    transform: translateZ(0) translateX(12%) translateY(-20px) scale(0.6)
 
 [data-bespoke-backdrop="jquery-ui-datepicker"]
   h2
@@ -94,6 +95,7 @@ li
     padding: 20px 18px 20px 30px
 .jquery-ui-datepicker
   background-image: url('../images/jquery-ui-datepicker.png')
+  background-position: 0 50%
   &.bespoke-backdrop-active
     opacity: .5
 
