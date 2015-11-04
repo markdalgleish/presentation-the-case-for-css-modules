@@ -3,7 +3,7 @@ html
   head
     meta(charset='utf-8')
     meta(name='viewport', content='width=device-width, initial-scale=1, maximum-scale=1')
-    title The End of Global CSS
+    title The Case for CSS Modules
 
     link(rel='stylesheet', type='text/css', href='build/build.css')
 
@@ -14,20 +14,12 @@ html
       section
 
       section
-        .avatars
-          img.avatar(src='images/profile.jpg')
-          img.avatar(src='images/glenmaddern.jpg')
+        img.avatar(src='images/profile.jpg')
       
       section(data-bespoke-backdrop='lego')
-        h1(style='line-height:100px') CSS in the<br>Component Age
-      
-      section
-        h3 &mdash; Part I &mdash;
-
-      section(data-bespoke-backdrop='space')
-        h2 The End
-        h3 &mdash; of &mdash;
-        h2 Global CSS
+        h2 The Case
+        h3 &mdash; for &mdash;
+        h2 CSS Modules
       
       section
         h3 Let&rsquo;s start at the beginning&hellip;
@@ -188,26 +180,6 @@ html
               span.bottom
               span.floor
         h1 Webpack
-      
-      section
-        h2.single-words Single Dependency Tree
-        
-      section
-        pre.language-javascript
-          code.
-            js/
-            css/
-            images/
-            fonts/
-        
-      section
-        pre.language-javascript
-          code.
-            components/
-              MyComponent/
-                MyComponent.js
-                MyComponent.css
-                icon.svg
 
       section
         pre.language-jsx
@@ -222,60 +194,118 @@ html
             );
 
       section
-        pre.language-css
-          code.
-            .MyComponent__Icon {
-              background-image: url('icon.svg');
-            }
-
-      section
-        h2.single-words Traversing different file types
-
-      section
-        ul
-          li style-loader
-          li css-loader
-          li postcss-loader
-          li less-loader
-          li sass-loader
-          li url-loader
-
-      section
-        pre.language-jsx(style='font-size: 20px')
-          code.
-            // webpack.config.js:
-            loaders: [{
-              test: /\.css$/,
-              loader: 'style-loader!css-loader!postcss-loader')
-            },{
-              test: /\.svg$/,
-              loader: 'url-loader?mimetype=image/svg+xml'
-            },{
-              test: /\.js$/,
-              loader: 'babel-loader'
-            }]
-      
-      section
         h2 Simple interface
 
       section
         pre.language-jsx
           code.
             import MyComponent from 'MyComponent';
-            
+
             export default () => &lt;MyComponent /&gt;;
 
+      section
+        .seek-logo
+
+      section
+        h2 Progressive<br /><br />Single Page Apps
+
+      section
+        ul
+          li Server rendered CSS
+          li :hover, :focus, :active
+          li Media queries
+          li CSS animation
+          li Psuedo classes for non-JS interactions<span class="bullet">&hellip;?</span>
+
+      section
+        .bullet.hide-checkbox
+          .bullet.show-checkbox
+            .takeoff
+              input(type='checkbox', id='rocket')
+              label(for='rocket')
+              .planet
+              .stars
+            h2 Checkbox hacks
+
+      section
+        pre.language-css
+          code.
+            .menu { transform: translateX(-500px) }
+
+            .toggle:checked ~ .menu { transform: none }
+      
+      section
+        h2 Late 2014&hellip;
+
+      section(data-bespoke-backdrop='vjeux')
+        h3(style='width:550px') &ldquo;CSS has fundamental flaws at scale that can be solved by writing styles in JS.&rdquo;
+        h4 @vjeux, November 2014
+
+      section(data-bespoke-backdrop='css-in-js-slide')
+
+      section(data-bespoke-backdrop='michelebertoli')
+        h2 MicheleBertoli/css-in-js
+
+      section
+        img(src='images/css-in-js.png',style='height: 100%')
+
+      section(data-bespoke-backdrop='andreypopp')
+        h1 react-style
+        h3 &mdash; by @andreypopp &mdash;
+
+      section
+        pre.language-jsx(style='font-size: 18px; line-height: 22px')
+          code.
+            import StyleSheet from 'react-style';
+
+            const styles = StyleSheet.create({
+                foo: {
+                  color: 'red',
+                  backgroundColor: 'white'
+                }
+            });
+            
+            export default () => (
+              &lt;div styles={styles.foo}&gt;
+                Hello, world!
+              &lt;/div&gt;
+            );
+
+      section
+        h2 Server rendered CSS
+        h3 &mdash; via Webpack plugin &mdash;
+
+      section
+        h2 but&hellip;
+
+      section
+        ul.minimal
+          li
+            strike Media queries
+          li
+            strike CSS animations
+          li
+            strike Psuedo classes
+
+      h2 And yet&hellip;
+
+      section(data-bespoke-backdrop='want')
+
+      section
+        h3 &mdash; How do we embrace the &mdash;
+        h2(style='width: 650px; line-height: 80px') inline style mindset in regular CSS?
+
       section(data-bespoke-backdrop='bem')
-        h2 BEM?
+        h2 BEM
 
       section
         h2 A block
         h3 &mdash; is &mdash;
         h2 a component
-      
+
       section(style='font-size: 40px')
         h3 &ldquo;Never use a block outside<br>a component of the same name&rdquo;
-      
+
       section
         h3
           .bullet.show
@@ -320,7 +350,43 @@ html
                     .component
       
       section
-        h3 Meanwhile&hellip;
+        pre.language-javascript
+          code.
+            components/
+              MyComponent/
+                MyComponent.js
+                MyComponent.css
+                icon.svg
+
+      section
+        pre.language-css
+          code.
+            .MyComponent__foo { ... }
+
+            .MyComponent__bar { ... }
+            .MyComponent__bar--expanded { ... }
+
+      section
+        h2 Plays really nicely<br><br>with the<br><br>CSS ecosystem
+
+      section
+        pre.language-jsx(style='font-size: 20px')
+          code.
+            loaders: [
+              {
+                test: /\.css/,
+                loader: 'style-loader!autoprefixer-loader!css-loader!less-loader'
+              }
+            ]
+
+      section
+        h2 Feels like<br><br>regular old CSS
+
+      section(data-bespoke-backdrop='legobricks')
+        h3(style='width: 800px; font-size: 60px; line-height: 80px') &ldquo;Block, Element, Modifying Your JavaScript Components&rdquo;
+
+      section
+        h3(style='font-size: 50px') Meanwhile&hellip;
 
       section
         .webpack-logo
@@ -388,6 +454,9 @@ html
             ._ah6Hch-gjsAdSE53CxzaEs { ... }
 
       section
+        h2 No more<br><br>naming collisions
+
+      section
         pre.language-javascript(style='width: 600px')
           code.
             // Styles object:
@@ -395,9 +464,6 @@ html
               'header': '_1rJwx92-gmbvaLiDdzgXiJ',
               'footer': '_ah6Hch-gjsAdSE53CxzaEs'
             }
-      
-      section
-        h2 No more<br><br>naming collisions
 
       section
         pre.language-javascript(style='width:700px')
@@ -444,12 +510,83 @@ html
         h2 postcss-local-scope
         h3 &mdash; Turned .class into :local(.class) &mdash;
 
+      section(data-bespoke-backdrop='space')
+        h2 The End
+        h3 &mdash; of &mdash;
+        h2 Global CSS
+
       section
         h3(style='width: 600px') &ldquo;I hope it&rsquo;s ok if I integrate your postcss-local-scope module into the css-loader&rdquo;
         h4 @sokra &mdash; May 24, 2015
 
       section
         h3(style='font-size: 50px') &lsquo;css-loader?module&rsquo;
+
+      section
+        h3(style='width: 650px') &ldquo;In the future, we could start generating shared classes between components automatically, treating style re-use as an optimisation at compile time.&rdquo;
+
+      section
+        h3(style='width: 600px; text-align: left') One-to-one mapping
+        pre.language-javascript(style='width: 600px')
+          code.
+            {
+              'foo': 'MyComponent__foo'
+            }
+
+      section
+        h3(style='width: 600px; text-align: left') Many-to-one mapping?
+        pre.language-javascript(style='width: 600px')
+          code.
+            {
+              'foo': 'class_1 class_2 class_3'
+            }
+
+      section
+        .webpack-logo
+          .logo
+            .cube-inner
+              span.front
+              span.back
+              span.right
+              span.left
+              span.top
+              span.bottom
+            .cube
+              span.front
+              span.back
+              span.right
+              span.left
+              span.top
+              span.bottom
+              span.floor
+        h1 Composition
+
+      section
+        pre.language-javascript
+          code.
+            .foo {
+              composes: heading from './typography.css';
+              composes: box from './layout.css';
+              color: red;
+            }
+
+      section
+        pre.language-css
+          code.
+            /* typography.css */
+            .heading { ... }
+
+            /* layout.css */
+            .box { ... }
+
+      section
+        pre.language-javascript
+          code.
+            {
+              'foo': `MyComponent__foo
+                      Typography__heading
+                      Layout__box`
+            }
 
       section
         h3(style='width: 700px') &ldquo;Have you thought about writing a standard for CSS modules that others could implement? What you&rsquo;re doing could totally fix the CSS ecosystem if it&rsquo;s widely adopted.&rdquo;
@@ -480,11 +617,11 @@ html
         h3(style='font-size: 50px') &lsquo;css-loader?modules&rsquo;
 
       section
-        .avatars
+        .avatars.big-avatars
           img.avatar(src='images/sokra.png')
           img.avatar(src='images/profile.jpg')
           img.avatar(src='images/glenmaddern.jpg')
-        .avatars
+        .avatars.big-avatars
           img.avatar(src='images/joshjohnston.jpg')
           img.avatar(src='images/joshgillies.jpg')
           img.avatar(src='images/sullenor.jpg')
@@ -497,12 +634,331 @@ html
           li Browserify
           li JSPM
           li Your build tool?
+
+      section(data-bespoke-backdrop='mjackson')
+        h3(style='width:650px') &ldquo;I&rsquo;m really encouraged by the work on CSS modules, though it only fixes part of the problem.&rdquo;
+        h4 @mjackson, October 2015
       
-      section
-        img.avatar(src='images/profile.jpg')
+      section(data-bespoke-backdrop='geelen')
+        h1 Values
+        h3 by @glenmaddern
 
       section
-        img.avatar(src='images/glenmaddern.jpg')
-        h3 &mdash; Part II &mdash;
+        pre.language-css
+          code.
+            @value primary: #BF4040;
+            @value secondary: #1F4F7F;
+
+            .text-primary {
+              color: primary;
+            }
+
+            .text-secondary {
+              color: secondary;
+            }
+
+      section
+        pre.language-css
+          code.
+            /* breakpoints.css */
+            @value small: (max-width: 599px);
+            @value medium: (min-width: 600px) and (max-width: 959px);
+            @value large: (min-width: 960px);
+
+      section
+        pre.language-css
+          code.
+            /* MyComponent.css */
+            @value large from "./breakpoints.css";
+
+            @media large {
+              .header {
+                box-shadow: 0 0 20px secondary;
+              }
+            }
+
+      section
+        h1 Theming
+
+      section
+        h3 i. Overriding styles
+
+      section(data-bespoke-backdrop='react')
+        h1 react-themeable
+
+      section
+        h2 Styles as props
+
+      section
+        pre.language-jsx
+          code.
+            &lt;MyComponent theme={theme} /&gt;
+
+      section
+        pre.language-css(style='width: 650px')
+          code.
+            /* MyComponentTheme.css */
+            .foo { color: red; }
+            .foo:hover { color: green; }
+            .bar { color: blue; }
+        pre.language-jsx(style='width: 650px')
+          code.
+            import theme from './MyComponentTheme.css';
+            &lt;MyComponent theme={theme} /&gt;
+
+      section(data-bespoke-backdrop='larrydavid')
+        h2 Component authors
+
+      section
+        pre.language-jsx(style='font-size: 20px; line-height: 32px')
+          code.
+            // Radium:
+            const theme = {
+              foo: {
+                'color': 'red',
+                ':hover': { color: 'green' }
+              },
+              bar: { 'color': 'blue' }
+            };
+
+            const ThemedComponent = Radium(MyComponent);
+            &lt;ThemedComponent theme={theme} /&gt;
+
+      section
+        pre.language-jsx(style='font-size: 20px; line-height: 32px')
+          code.
+            // JSS:
+            const sheet = jss.createStyleSheet({
+              foo: {
+                'color': 'red'
+              },
+              bar: {
+                'color': 'blue'
+              }
+            }).attach();
+
+            &lt;MyComponent theme={sheet.classes} /&gt;
+
+      section
+        pre.language-jsx(style='font-size: 20px; line-height: 32px')
+          code.
+            // Inline styles:
+            const theme = {
+              foo: {
+                'color': 'red'
+              },
+              bar: {
+                'color': 'blue'
+              }
+            };
+
+            &lt;MyComponent theme={theme} /&gt;
+
+      section(data-bespoke-backdrop='react')
+        h3(style='font-size: 50px') ReactCSSTransitionGroup
+
+      section
+        pre.language-jsx
+          code.
+            const classes = {
+              enter: 'header__menu--enter',
+              enterActive: 'header__menu--enterActive',
+              leave: 'header__menu--leave',
+              ...
+            };
+        pre.language-jsx
+          code.
+            &lt;ReactCSSTransitionGroup transitionName={classes}&gt;
+
+      section
+        pre.language-jsx
+          code.
+            const classes = {
+              enter: 'header__menu--enter',
+              enterActive: 'header__menu--enterActive',
+              leave: 'header__menu--leave',
+              ...
+            };
+
+            // ...Look familiar?
+
+      section
+        pre.language-css
+          code.
+            /* transitions.css */
+
+            .enter {
+              opacity: 0.01;
+            }
+
+            .enter.enterActive {
+              opacity: 1;
+              transition: opacity 500ms ease-in;
+            }
+
+      section
+        pre.language-jsx
+          code.
+            import styles from './transitions.css';
+        pre.language-jsx
+          code.
+            &lt;ReactCSSTransitionGroup transitionName={styles}&gt;
+
+      section
+        h3 ii. Overriding theme variables
+
+      section
+        h3(style='font-size: 50px') &hellip;Functions?
+
+      section(data-bespoke-backdrop='want')
+
+      section(data-bespoke-backdrop='experiment')
+
+      section
+        h3(style='width: 450px') Please note: The views expressed in this presentation are not necessarily the views of the CSS Modules team
+
+      section(data-bespoke-backdrop='scared')
+        h1 CSS Modules<br>&hellip;in JS?
+
+      section
+        h3 &lsquo;style-loader!css-loader?modules&rsquo;
+
+      section
+        h3 &lsquo;style-loader!css-loader?modules!another-loader&rsquo;
+
+      section
+        h2 CSS Modules
+        h3 &mdash; make a great &mdash;
+        h2 Compilation target
+
+      section
+        ul
+          li First-class Webpack support
+          li Local scoping for free
+          li Extract CSS file with standard tooling
+          li Focus on your API, not the tooling
+
+      section(data-bespoke-backdrop='andreypopp')
+        h1 Styling
+        h3 &mdash; by @andreypopp &mdash;
+
+      section
+        pre.language-jsx
+          code.
+            import styling from 'styling';
+            import color from 'color';
+
+            import { primary } from './theme';
+
+            export const button = styling({
+              backgroundColor: color(primary)
+                .darken(0.1)
+                .hexString()
+            });
+
+            var styling = require('styling')
+
+      section
+        pre.language-jsx
+          code.
+            loaders: [
+              {
+                test: /\.style\.js/,
+                loader: styling(
+                  ['style', 'css'], // loaders executed after styling
+                  ['babel']        // loaders executed before styling
+                )
+              }
+            ]
+
+      section
+        h1 jss-loader
+        h3 &mdash; by @markdalgleish &mdash;
+  
+      section
+        pre.language-jsx
+          code.
+            import { largeScreen } from './breakpoints';
+
+            export default {
+              '.root': {
+                padding: 10,
+                ...largeScreen({
+                  padding: 20
+                })
+              }
+            };
+
+      section
+        pre.language-jsx
+          code.
+            loaders: [
+              {
+                test: /\.jss\.js/,
+                loader: 'style-loader!css-loader?modules!jss-loader'
+              }
+            ]
+
+      section(style='font-size: 20px')
+        pre.language-jsx
+          code.
+            module.exports = {
+              module: { loaders: [...] },
+              jssLoader: {
+                plugins: [
+                  require('jss-nested'),
+                  require('jss-extend'),
+                  require('jss-camel-case'),
+                  require('jss-props-sort'),
+                  require('jss-px')
+                ]
+              }
+            };
+
+      section
+        h2 Approachability?
+
+      section(data-bespoke-backdrop='maze')
+
+      section(data-bespoke-backdrop='experiment')
+        h2 Experiment with us!
+
+      section
+        .avatars
+          img.avatar(src='images/avatars/vjeux.png')
+          img.avatar(src='images/michelebertoli.jpg')
+          img.avatar(src='images/avatars/joshwnj.png')
+          img.avatar(src='images/avatars/geelen.jpg')
+          img.avatar(src='images/avatars/sokra.png')
+          img.avatar(src='images/sullenor.jpg')
+          img.avatar(src='images/avatars/joshgillies.jpg')
+          img.avatar(src='images/avatars/andreypopp.png')
+          img.avatar(src='images/avatars/ianobermiller.jpg')
+          img.avatar(src='images/avatars/petehunt.jpg')
+          img.avatar(src='images/avatars/alexlande.png')
+          img.avatar(src='images/avatars/gajus.jpg')
+          img.avatar(src='images/avatars/rickwong.png')
+          img.avatar(src='images/avatars/blakeembrey.jpg')
+          img.avatar(src='images/avatars/kof.jpg')
+          img.avatar(src='images/avatars/gaearon.jpg')
+          img.avatar(src='images/jaketrent.jpg')
+          img.avatar(src='images/avatars/sanderspies.jpg')
+          img.avatar(src='images/avatars/azazdeaz.jpg')
+          img.avatar(src='images/avatars/joeybaker.jpg')
+          img.avatar(src='images/avatars/ai.jpg')
+          img.avatar(src='images/avatars/rofrischmann.png')
+          img.avatar(src='images/avatars/nick.jpg')
+          img.avatar(src='images/avatars/etoraken.jpg')
+          img.avatar(src='images/avatars/casesandberg.jpg')
+          img.avatar(src='images/avatars/chriskjaer.jpg')
+          img.avatar(src='images/avatars/pygy.png')
+          img.avatar(src='images/avatars/jozanza.gif')
+          img.avatar(src='images/avatars/jhudson8.jpg')
+          img.avatar(src='images/avatars/hackhat.jpg')
+          img.avatar(src='images/avatars/bloodyowl.jpg')
+          img.avatar(src='images/avatars/elierotenberg.png')
+
+      section
+        img.avatar(src='images/profile.jpg')
 
     script(src='build/build.js')

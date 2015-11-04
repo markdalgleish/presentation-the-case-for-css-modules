@@ -15,8 +15,15 @@ li
   width: 100px
   border-radius: @width
   .avatars &
+    width: 80px
     display: inline-block
-    margin: 20px
+    margin: 10px 10px 0
+  .big-avatars &
+    width: 120px
+    margin: 16px 16px 0
+
+.avatars
+  margin: 0 60px
 
 .seek-logo
   background-image: url('../images/seek.svg')
@@ -82,12 +89,14 @@ li
   color: black
 .bem
   background-image: url('../images/bem.svg')
-  transform: translateZ(0) translateX(12%) translateY(-20px) scale(1)
+  background-size: contain
+  background-repeat: no-repeat
+  transform: translateZ(0) translateX(9%) translateY(-20px) scale(1)
   &.bespoke-backdrop-active
     opacity: 1
   &.bespoke-backdrop-active,
   &.bespoke-backdrop-before
-    transform: translateZ(0) translateX(12%) translateY(-20px) scale(0.6)
+    transform: translateZ(0) translateX(9%) translateY(-20px) scale(0.6)
 
 [data-bespoke-backdrop="jquery-ui-datepicker"]
   h2
@@ -224,3 +233,144 @@ li
 
 .logo
   transform: rotateX(0deg)
+
+// New stuff...
+
+ul.minimal li:before
+  display: none
+
+.vjeux
+  background-image: url('../images/vjeux.jpg')
+  transform-origin: 55% 20%
+  &.bespoke-backdrop-active
+    opacity: .2
+
+.css-in-js-slide
+  background-image: url('../images/css-in-js-slide.png')
+  background-color: black
+  background-size: contain
+  background-repeat: no-repeat
+  transform: none
+  &.bespoke-backdrop-active
+    opacity: 1
+
+.michelebertoli
+  background-image: url('../images/michelebertoli.jpg')
+  transform-origin: 50% 30%
+  &.bespoke-backdrop-active
+    opacity: .5
+
+.geelen
+  background-image: url('../images/avatars/geelen.jpg')
+  transform-origin: 50% 30%
+  &.bespoke-backdrop-active
+    opacity: .5
+
+.andreypopp
+  background-image: url('../images/avatars/andreypopp.png')
+  transform-origin: 50% 50%
+  &.bespoke-backdrop-active
+    opacity: .2
+
+.want
+  background-image: url('../images/want.gif')
+  transform: none
+  &.bespoke-backdrop-active
+    opacity: 1
+
+.legobricks
+  background-image: url('../images/legobricks.jpg')
+  transform-origin: 50% 60%
+  &.bespoke-backdrop-active
+    opacity: .3
+
+.mjackson
+  background-image: url('../images/mjackson.jpg')
+  transform-origin: 50% 30%
+  &.bespoke-backdrop-active
+    opacity: .3
+
+.larrydavid
+  background-image: url('../images/larrydavid.gif')
+  transform: none !important
+  background-position: 50% 0
+  &.bespoke-backdrop-active
+    opacity: .6
+
+.scared
+  background-image: url('../images/scared.gif')
+  transform: none !important
+  background-position: 50% 0
+  &.bespoke-backdrop-active
+    opacity: .4
+
+.experiment
+  background-image: url('../images/experiment.jpg')
+  background-position: 100% 0
+  transform-origin: 60% 30%
+  &.bespoke-backdrop-active
+    opacity: .4
+
+.maze
+  background-image: url('../images/maze.gif')
+  transform: none !important
+  &.bespoke-backdrop-active
+    opacity: 1
+
+
+// Ryan Seddon, you legend.
+.hide-checkbox, .show-checkbox
+  opacity: 1 !important
+.hide-checkbox input,
+.hide-checkbox h2
+  transition: opacity 2s ease
+  opacity: 0
+.show-checkbox.bespoke-bullet-active input,
+.show-checkbox.bespoke-bullet-active h2
+  opacity: 1
+.takeoff
+  width: 100px;
+  height: 200px;
+  margin: 0 auto;
+  position: relative;
+  left: 22px;
+.takeoff input + label
+  width: 56px;
+  height: 118px;
+  background: url('../images/rocket.png') 0 0 no-repeat;
+  display: block;
+  transition: transform 8s;
+  transition-timing-function: cubic-bezier(0.38, -0.1, 0.46, 0.45);
+.takeoff input:checked + label
+  height: 156px;
+  background-position: 0 100%;
+  transform: translateY(-20em);
+.takeoff input ~ .stars
+  background: url('../images/star-background.jpg')
+  opacity: 0.4;
+  background-size: cover
+  position: absolute
+  z-index: -2
+  left: -500px
+  top: -1000px
+  width: 1100px
+  height: 2000px
+  transition: all 5s ease
+.takeoff input:checked ~ .stars
+  transform: translateY(200px)
+  transition: all 10s ease
+  transition-delay: .3s
+.takeoff input ~ .planet
+  position: absolute;
+  bottom: -1950px;
+  left: -980px;
+  width: 2040px;
+  height: 2040px;
+  background: #222;
+  box-shadow: 0 0 100px rgba(100%, 100%, 100%, 0.5);
+  border-radius: 2040px;
+  z-index: -1;
+  transition: all 5s ease
+  transition-delay: .3s
+.takeoff input:checked ~ .planet
+  transform: translateY(400px)
