@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>The Case for CSS Modules</title>
+    <link rel="stylesheet" type="text/css" href="build/build.css">
+  </head>
+  <body>
+    <article>
+      <section></section>
+      <section><img src="images/profile.jpg" class="avatar"></section>
+      <section data-bespoke-backdrop="lego">
+        <h2>The Case</h2>
+        <h3>&mdash; for &mdash;</h3>
+        <h2>CSS Modules</h2>
+      </section>
+      <section>
+        <h3>Let&rsquo;s start at the beginning&hellip;</h3>
+      </section>
+      <section><img style="height: 100%" src="images/creative-html-design.jpg" alt="Creative HTML Design book cover"></section>
+      <section data-bespoke-backdrop="chapter-13"></section>
+      <section data-bespoke-backdrop="css-zen-garden-0"></section>
+      <section data-bespoke-backdrop="css-zen-garden-1"></section>
+      <section data-bespoke-backdrop="css-zen-garden-2"></section>
+      <section data-bespoke-backdrop="css-zen-garden-3"></section>
+      <section>
+        <h2>Documents</h2>
+        <h3>&mdash; vs. &mdash;</h3>
+        <h2>Web Apps</h2>
+      </section>
+      <section>
+        <h2>Global scope</h2>
+        <h3>&mdash; vs &mdash;</h3>
+        <h2>Maintenance</h2>
+      </section>
+      <section>
+        <ul>
+          <li>OOCSS</li>
+          <li>SMACSS</li>
+          <li>BEM</li>
+          <li>SUIT</li>
+          <li>Inline styles!</li>
+        </ul>
+      </section>
+      <section>
+        <pre style="font-size: 30px" class="language-css"><code>.Block__Element--Modifier { ... }
+</code></pre>
+      </section>
+      <section>
+        <pre style="font-size: 14px" class="language-markup"><code>&lt;div class="page my-page"&gt;
+
+  &lt;header class="header"&gt;
+    &lt;h1 class="heading header__heading"&gt;...&lt;/h1&gt;
+  &lt;/header&gt;
+  
+  &lt;article class="post"&gt;
+    &lt;header class="post__header"&gt;
+      &lt;h1 class="heading post__heading"&gt;Hello World&lt;/h1&gt;
+    &lt;/header&gt;
+    &lt;section class="post__content"&gt;...&lt;/section&gt;
+  &lt;/article&gt;
+  
+  &lt;footer class="footer"&gt;...&lt;/footer&gt;
+  
+&lt;/div&gt;
+</code></pre>
+      </section>
+      <section>
+        <h2>The Age</h2>
+        <h3>&mdash; of &mdash;</h3>
+        <h2>Components</h2>
+      </section>
+      <section>
+        <ul>
+          <li>Web components</li>
+          <li>Polymer</li>
+          <li>Angular&rsquo;s directives</li>
+        </ul>
+      </section>
+      <section data-bespoke-backdrop="react">
+        <h1>React</h1>
+      </section>
+      <section>
+        <h2 class="single-words">Components are nothing new</h2>
+      </section>
+      <section>
+        <pre class="language-markup"><code>&lt;select&gt;
+  &lt;option&gt;...&lt;/option&gt;
+  &lt;option&gt;...&lt;/option&gt;
+  &lt;option&gt;...&lt;/option&gt;
+&lt;/select&gt;
+
+&lt;input type="date" /&gt;
+</code></pre>
+      </section>
+      <section>
+        <h2>CSS and images</h2>
+        <h3>&mdash; are &mdash;</h3>
+        <h2>private to a component</h2>
+      </section>
+      <section>
+        <h3 style="font-size: 45px">Unless you use third-party components&hellip;</h3>
+      </section>
+      <section data-bespoke-backdrop="jquery-ui-datepicker">
+        <h2>jQuery UI Date Picker</h2>
+      </section>
+      <section>
+        <h2 class="single-words">Our tools reflected this</h2>
+      </section>
+      <section data-bespoke-backdrop="gulp-logo"></section>
+      <section>
+        <pre style="font-size: 20px" class="language-javascript"><code>gulp.task('js', function() {
+  return gulp.src('src/js/index.js')
+    .pipe(browserify());
+});
+
+gulp.task('css', function() {
+  return gulp.src('src/styles/index.scss')
+    .pipe(sass());
+});
+
+gulp.task('images', function() { ... });
+</code></pre>
+      </section>
+      <section data-bespoke-backdrop="sass-logo"></section>
+      <section>
+        <pre style="font-size: 20px" class="language-javascript"><code>@import "vendor/normalize";
+
+@import "config/colors";
+@import "config/media_queries";
+
+@import "modules/btn";
+@import "modules/dropdown";
+@import "modules/header";
+
+@import "utilities/align";
+@import "utilities/clearfix";
+</code></pre>
+      </section>
+      <section>
+        <h2>Tooling</h2>
+        <h3>&mdash; for the &mdash;</h3>
+        <h2>component age?</h2>
+      </section>
+      <section>
+        <div class="webpack-logo">
+          <div class="logo">
+            <div class="cube-inner"><span class="front"></span><span class="back"></span><span class="right"></span><span class="left"></span><span class="top"></span><span class="bottom"></span></div>
+            <div class="cube"><span class="front"></span><span class="back"></span><span class="right"></span><span class="left"></span><span class="top"></span><span class="bottom"></span><span class="floor"></span></div>
+          </div>
+        </div>
+        <h1>Webpack</h1>
+      </section>
+      <section>
+        <pre class="language-jsx"><code>require('./MyComponent.css');
+
+export default () => (
+  &lt;div className="MyComponent"&gt;
+    &lt;div className="MyComponent__Icon"&gt;Icon&lt;/div&gt;
+    ...
+  &lt;/div&gt;
+);
+</code></pre>
+      </section>
+      <section>
+        <h2>Simple interface</h2>
+      </section>
+      <section>
+        <pre class="language-jsx"><code>import MyComponent from 'MyComponent';
+
+export default () => &lt;MyComponent /&gt;;
+</code></pre>
+      </section>
+      <section>
+        <div class="seek-logo"></div>
+      </section>
+      <section>
+        <h2>Progressive<br /><br />Single Page Apps</h2>
+      </section>
+      <section>
+        <ul>
+          <li>Server rendered CSS</li>
+          <li>:hover, :focus, :active</li>
+          <li>Media queries</li>
+          <li>CSS animation</li>
+          <li>Psuedo classes for non-JS interactions<span class="bullet">&hellip;?</span></li>
+        </ul>
+      </section>
+      <section>
+        <div class="bullet hide-checkbox">
+          <div class="bullet show-checkbox">
+            <div class="takeoff">
+              <input type="checkbox" id="rocket">
+              <label for="rocket"></label>
+              <div class="planet"></div>
+              <div class="stars"></div>
+            </div>
+            <h2>Checkbox hacks</h2>
+          </div>
+        </div>
+      </section>
+      <section>
+        <pre class="language-css"><code>.menu { transform: translateX(-500px) }
+
+.toggle:checked ~ .menu { transform: none }
+</code></pre>
+      </section>
+      <section>
+        <h2>Late 2014&hellip;</h2>
+      </section>
+      <section data-bespoke-backdrop="vjeux">
+        <h3 style="width:550px">&ldquo;CSS has fundamental flaws at scale that can be solved by writing styles in JS.&rdquo;</h3>
+        <h4>@vjeux, November 2014</h4>
+      </section>
+      <section data-bespoke-backdrop="css-in-js-slide"></section>
+      <section data-bespoke-backdrop="michelebertoli">
+        <h2>MicheleBertoli/css-in-js</h2>
+      </section>
+      <section><img src="images/css-in-js.png" style="height: 100%"></section>
+      <section data-bespoke-backdrop="andreypopp">
+        <h1>react-style</h1>
+        <h3>&mdash; by @andreypopp &mdash;</h3>
+      </section>
+      <section>
+        <pre style="font-size: 18px; line-height: 22px" class="language-jsx"><code>import StyleSheet from 'react-style';
+
+const styles = StyleSheet.create({
+    foo: {
+      color: 'red',
+      backgroundColor: 'white'
+    }
+});
+
+export default () => (
+  &lt;div styles={styles.foo}&gt;
+    Hello, world!
+  &lt;/div&gt;
+);
+</code></pre>
+      </section>
+      <section>
+        <h2>Server rendered CSS</h2>
+        <h3>&mdash; via Webpack plugin &mdash;</h3>
+      </section>
+      <section>
+        <h2>but&hellip;</h2>
+      </section>
+      <section>
+        <ul class="minimal">
+          <li>
+            <strike>Media queries</strike>
+          </li>
+          <li>
+            <strike>CSS animations</strike>
+          </li>
+          <li>
+            <strike>Psuedo classes</strike>
+          </li>
+        </ul>
+      </section>
+      <h2>And yet&hellip;</h2>
+      <section data-bespoke-backdrop="want"></section>
+      <section>
+        <h3>&mdash; How do we embrace the &mdash;</h3>
+        <h2 style="width: 650px; line-height: 80px">inline style mindset in regular CSS?</h2>
+      </section>
+      <section data-bespoke-backdrop="bem">
+        <h2>BEM</h2>
+      </section>
+      <section>
+        <h2>A block</h2>
+        <h3>&mdash; is &mdash;</h3>
+        <h2>a component</h2>
+      </section>
+      <section style="font-size: 40px">
+        <h3>&ldquo;Never use a block outside<br>a component of the same name&rdquo;</h3>
+      </section>
+      <section>
+        <h3>
+          <div class="bullet show">
+            <div class="bullet show show-css-and-js">
+              <div class="bullet show show-component">
+                <div class="bullet show show-component-tree">
+                  <div class="circles">
+                    <div class="css"></div>
+                    <div class="js"></div>
+                    <div class="component"></div>
+                  </div>
+                  <div class="circles circles--multiple circles--multiple-0">
+                    <div class="css"></div>
+                    <div class="js"></div>
+                    <div class="component"></div>
+                  </div>
+                  <div class="circles circles--multiple circles--multiple-1">
+                    <div class="css"></div>
+                    <div class="js"></div>
+                    <div class="component"></div>
+                  </div>
+                  <div class="circles circles--multiple circles--multiple-2">
+                    <div class="css"></div>
+                    <div class="js"></div>
+                    <div class="component"></div>
+                  </div>
+                  <div class="circles circles--multiple circles--multiple-3">
+                    <div class="css"></div>
+                    <div class="js"></div>
+                    <div class="component"></div>
+                  </div>
+                  <div class="circles circles--multiple circles--multiple-4">
+                    <div class="css"></div>
+                    <div class="js"></div>
+                    <div class="component"></div>
+                  </div>
+                  <div class="circles circles--multiple circles--multiple-5">
+                    <div class="css"></div>
+                    <div class="js"></div>
+                    <div class="component"></div>
+                  </div>
+                  <div class="circles circles--multiple circles--multiple-6">
+                    <div class="css"></div>
+                    <div class="js"></div>
+                    <div class="component"></div>
+                  </div>
+                  <div class="circles circles--multiple circles--multiple-7">
+                    <div class="css"></div>
+                    <div class="js"></div>
+                    <div class="component"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </h3>
+      </section>
+      <section>
+        <pre class="language-javascript"><code>components/
+  MyComponent/
+    MyComponent.js
+    MyComponent.css
+    icon.svg
+    </code></pre>
+      </section>
+      <section>
+        <pre class="language-css"><code>.MyComponent__foo { ... }
+
+.MyComponent__bar { ... }
+.MyComponent__bar--expanded { ... }
+</code></pre>
+      </section>
+      <section>
+        <h2>Plays really nicely<br><br>with the<br><br>CSS ecosystem</h2>
+      </section>
+      <section>
+        <pre style="font-size: 20px" class="language-jsx"><code>loaders: [
+  {
+    test: /\.css/,
+    loader: 'style-loader!autoprefixer-loader!css-loader!less-loader'
+  }
+]
+</code></pre>
+      </section>
+      <section>
+        <h2>Feels like<br><br>regular old CSS</h2>
+      </section>
+      <section data-bespoke-backdrop="legobricks">
+        <h3 style="width: 800px; font-size: 60px; line-height: 80px">&ldquo;Block, Element, Modifying Your JavaScript Components&rdquo;</h3>
+      </section>
+      <section>
+        <h3 style="font-size: 50px">Meanwhile&hellip;</h3>
+      </section>
+      <section>
+        <div class="webpack-logo">
+          <div class="logo">
+            <div class="cube-inner"><span class="front"></span><span class="back"></span><span class="right"></span><span class="left"></span><span class="top"></span><span class="bottom"></span></div>
+            <div class="cube"><span class="front"></span><span class="back"></span><span class="right"></span><span class="left"></span><span class="top"></span><span class="bottom"></span><span class="floor"></span></div>
+          </div>
+        </div>
+        <h1>Local Scope</h1>
+      </section>
+      <section>
+        <pre class="language-javascript"><code>require('./MyComponent.css');
+
+// becomes...
+
+import styles from './MyComponent.css';
+</code></pre>
+      </section>
+      <section>
+        <h2>What does &lsquo;styles&rsquo;<br /><br />evaluate to?</h2>
+      </section>
+      <section>
+        <h3 style="font-size: 50px">First, let&rsquo;s look at the CSS&hellip;</h3>
+      </section>
+      <section>
+        <pre style="font-size: 40px" class="language-css"><code>:local(.header) { ... }
+:local(.footer) { ... }
+</code></pre>
+      </section>
+      <section>
+        <pre class="language-jsx"><code>import styles from './MyComponent.css';
+
+export default () => (
+  &lt;div&gt;
+    &lt;div className={styles.header}&gt;...&lt;/div&gt;
+    &lt;div className={styles.footer}&gt;...&lt;/div&gt;
+  &lt;/div&gt;
+);
+</code></pre>
+      </section>
+      <section>
+        <pre style="width: 600px" class="language-css"><code>:local(.header) { ... }
+:local(.footer) { ... }</code></pre>
+        <h3 style="width: 600px; text-align: left">Becomes:</h3>
+        <pre style="width: 600px" class="language-css"><code>/* Globally unique classes */
+._1rJwx92-gmbvaLiDdzgXiJ { ... }
+._ah6Hch-gjsAdSE53CxzaEs { ... }
+</code></pre>
+      </section>
+      <section>
+        <h2>No more<br><br>naming collisions</h2>
+      </section>
+      <section>
+        <pre style="width: 600px" class="language-javascript"><code>// Styles object:
+{
+  'header': '_1rJwx92-gmbvaLiDdzgXiJ',
+  'footer': '_ah6Hch-gjsAdSE53CxzaEs'
+}
+</code></pre>
+      </section>
+      <section>
+        <pre style="width:700px" class="language-javascript"><code>loader: 'css?localIdentName=[name]__[local]'</code></pre>
+        <pre style="width:700px" class="language-css"><code>.MyComponent__foo { ... }
+.MyComponent__bar { ... }
+</code></pre>
+      </section>
+      <section>
+        <div class="seek-logo"></div>
+      </section>
+      <section>
+        <pre class="language-css"><code>:local(.field) { ... }
+:local(.field):focus { ... }
+
+:local(.backdrop) { ... }
+:local(.root_isCollapsed) :local(.backdrop) { ... }
+
+:local(.panel) .transition-active-enter { ... }
+</code></pre>
+      </section>
+      <section style="font-size: 40px">
+        <h3>&ldquo;What if locally scoped<br />CSS was the default?&rdquo;</h3>
+      </section>
+      <section>
+        <pre class="language-css"><code>.backdrop { ... }
+.root_isCollapsed .backdrop { ... }
+
+.field { ... }
+.field:focus { ... }
+
+.panel :global .transition-active-enter { ... }
+
+</code></pre>
+      </section>
+      <section data-bespoke-backdrop="postcss-logo">
+        <h2>postcss</h2>
+      </section>
+      <section>
+        <h2>postcss-local-scope</h2>
+        <h3>&mdash; Turned .class into :local(.class) &mdash;</h3>
+      </section>
+      <section data-bespoke-backdrop="space">
+        <h2>The End</h2>
+        <h3>&mdash; of &mdash;</h3>
+        <h2>Global CSS</h2>
+      </section>
+      <section>
+        <h3 style="width: 600px">&ldquo;I hope it&rsquo;s ok if I integrate your postcss-local-scope module into the css-loader&rdquo;</h3>
+        <h4>@sokra &mdash; May 24, 2015</h4>
+      </section>
+      <section>
+        <h3 style="font-size: 50px">&lsquo;css-loader?module&rsquo;</h3>
+      </section>
+      <section>
+        <h3 style="width: 650px">&ldquo;In the future, we could start generating shared classes between components automatically, treating style re-use as an optimisation at compile time.&rdquo;</h3>
+      </section>
+      <section>
+        <h3 style="width: 600px; text-align: left">One-to-one mapping</h3>
+        <pre style="width: 600px" class="language-javascript"><code>{
+  'foo': 'MyComponent__foo'
+}
+</code></pre>
+      </section>
+      <section>
+        <h3 style="width: 600px; text-align: left">Many-to-one mapping?</h3>
+        <pre style="width: 600px" class="language-javascript"><code>{
+  'foo': 'class_1 class_2 class_3'
+}
+</code></pre>
+      </section>
+      <section>
+        <div class="webpack-logo">
+          <div class="logo">
+            <div class="cube-inner"><span class="front"></span><span class="back"></span><span class="right"></span><span class="left"></span><span class="top"></span><span class="bottom"></span></div>
+            <div class="cube"><span class="front"></span><span class="back"></span><span class="right"></span><span class="left"></span><span class="top"></span><span class="bottom"></span><span class="floor"></span></div>
+          </div>
+        </div>
+        <h1>Composition</h1>
+      </section>
+      <section>
+        <pre class="language-javascript"><code>.foo {
+  composes: heading from './typography.css';
+  composes: box from './layout.css';
+  color: red;
+}
+</code></pre>
+      </section>
+      <section>
+        <pre class="language-css"><code>/* typography.css */
+.heading { ... }
+
+/* layout.css */
+.box { ... }
+</code></pre>
+      </section>
+      <section>
+        <pre class="language-javascript"><code>{
+  'foo': `MyComponent__foo
+          Typography__heading
+          Layout__box`
+}
+</code></pre>
+      </section>
+      <section>
+        <h3 style="width: 700px">&ldquo;Have you thought about writing a standard for CSS modules that others could implement? What you&rsquo;re doing could totally fix the CSS ecosystem if it&rsquo;s widely adopted.&rdquo;</h3>
+        <h4>@markdalgleish &mdash; May 23, 2015</h4>
+      </section>
+      <section data-bespoke-backdrop="initial-commit"></section>
+      <section>
+        <svg id="svg2" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns="http://www.w3.org/2000/svg" height="1e3" viewBox="0 0 1000 1000" width="1e3" version="1.1" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/">
+         <g id="layer1" transform="translate(3.7129 -62.36)">
+          <g id="flowRoot3336" transform="matrix(1.8595,0,0,1.8595,-30.174,333.87)">
+           <path fill="#fff" stroke="none" id="path4379" d="m105.49 108.89q12.261 0 19.028 6.46 6.7676 6.46 7.5146 14.678h-8.5254q-1.4502-6.2402-5.8008-9.8877-4.3066-3.6475-12.129-3.6475-9.5361 0-15.425 6.7236-5.8447 6.6797-5.8447 20.522 0 11.338 5.2734 18.413 5.3174 7.0312 15.82 7.0312 9.668 0 14.722-7.4268 2.6807-3.9111 3.999-10.283h8.5254q-1.1426 10.195-7.5586 17.095-7.6904 8.3057-20.742 8.3057-11.25 0-18.896-6.8115-10.063-9.0088-10.063-27.817 0-14.282 7.5586-23.423 8.1738-9.9316 22.544-9.9316zm-1.7578 0z"/>
+           <path fill="#fff" stroke="none" id="path4381" d="m149.04 154.37q0.30761 5.4932 2.5928 8.9209 4.3506 6.416 15.337 6.416 4.9219 0 8.9648-1.4062 7.8223-2.7246 7.8223-9.7559 0-5.2734-3.2959-7.5146-3.3398-2.1973-10.459-3.8232l-8.7451-1.9775q-8.5693-1.9336-12.129-4.2627-6.1524-4.043-6.1524-12.085 0-8.7012 6.0205-14.282 6.0205-5.5811 17.051-5.5811 10.151 0 17.227 4.9219 7.1192 4.8779 7.1192 15.645h-8.2178q-0.65918-5.1856-2.8125-7.9541-3.999-5.0537-13.579-5.0537-7.7344 0-11.118 3.252-3.3838 3.252-3.3838 7.5586 0 4.7461 3.9551 6.9434 2.5928 1.4062 11.733 3.5156l9.0527 2.0654q6.5478 1.4941 10.107 4.0869 6.1523 4.5264 6.1523 13.14 0 10.723-7.8223 15.337-7.7783 4.6143-18.105 4.6143-12.041 0-18.853-6.1523-6.8115-6.1084-6.6797-16.567h8.2178zm17.666-45.483z"/>
+           <path fill="#fff" stroke="none" id="path4383" d="m208.98 154.37q0.30762 5.4932 2.5928 8.9209 4.3506 6.416 15.337 6.416 4.9219 0 8.9648-1.4062 7.8223-2.7246 7.8223-9.7559 0-5.2734-3.2959-7.5146-3.3398-2.1973-10.459-3.8232l-8.7451-1.9775q-8.5693-1.9336-12.129-4.2627-6.1523-4.043-6.1523-12.085 0-8.7012 6.0205-14.282 6.0205-5.5811 17.051-5.5811 10.151 0 17.227 4.9219 7.1191 4.8779 7.1191 15.645h-8.2178q-0.65918-5.1856-2.8125-7.9541-3.999-5.0537-13.579-5.0537-7.7344 0-11.118 3.252-3.3838 3.252-3.3838 7.5586 0 4.7461 3.9551 6.9434 2.5928 1.4062 11.733 3.5156l9.0527 2.0654q6.5479 1.4941 10.107 4.0869 6.1523 4.5264 6.1523 13.14 0 10.723-7.8223 15.337-7.7783 4.6143-18.105 4.6143-12.041 0-18.853-6.1523-6.8115-6.1084-6.6797-16.567h8.2178zm17.666-45.483z"/>
+           <path fill="#fff" stroke="none" id="path4385" d="m78.063 223.14h12.524l18.545 54.58 18.413-54.58h12.393v64.556h-8.3057v-38.101q0-1.9775 0.0879-6.5478t0.0879-9.7998l-18.413 54.448h-8.6572l-18.545-54.448v1.9775q0 2.373 0.08789 7.251 0.13184 4.834 0.13184 7.1191v38.101h-8.3496v-64.556z"/>
+           <path fill="#fff" stroke="none" id="path4387" d="m181.2 221.39q17.095 0 25.312 10.986 6.416 8.5693 6.416 21.929 0 14.458-7.3389 24.038-8.6133 11.25-24.565 11.25-14.897 0-23.423-9.8438-7.6025-9.4922-7.6025-23.994 0-13.096 6.5039-22.412 8.3496-11.953 24.697-11.953zm0.87891 60.381q11.558 0 16.699-8.2617 5.1856-8.3057 5.1856-19.072 0-11.382-5.9766-18.325-5.9326-6.9434-16.26-6.9434-10.02 0-16.348 6.8994-6.3281 6.8555-6.3281 20.259 0 10.723 5.4053 18.105 5.4492 7.3389 17.622 7.3389zm-0.61523-60.381z"/>
+           <path fill="#fff" stroke="none" id="path4389" d="m248.09 280.23q4.4385 0 7.2949-0.92285 5.0977-1.7139 8.3496-6.5918 2.5928-3.9111 3.7354-10.02 0.65918-3.6475 0.65918-6.7676 0-11.997-4.79-18.633-4.75-6.63-15.34-6.63h-15.513v49.57h15.601zm-24.39-57.085h26.147q13.315 0 20.654 9.4482 6.5478 8.5254 6.5478 21.841 0 10.283-3.8672 18.589-6.8115 14.678-23.423 14.678h-26.06v-64.556z"/>
+           <path fill="#fff" stroke="none" id="path4391" d="m297.83 223.14v39.902q0 7.0312 2.6367 11.689 3.9111 7.0312 13.184 7.0312 11.118 0 15.117-7.6025 2.1533-4.1309 2.1533-11.118v-39.902h8.877v36.255q0 11.909-3.208 18.325-5.8887 11.689-22.236 11.689-16.348 0-22.192-11.689-3.208-6.416-3.208-18.325v-36.255h8.877zm16.567 0z"/>
+           <path fill="#fff" stroke="none" id="path4393" d="m353.21 223.14h8.7451v56.865h32.695v7.6904h-41.44v-64.556z"/>
+           <path fill="#fff" stroke="none" id="path4395" d="m404.14 223.14h47.065v7.9102h-38.54v19.6h35.64v7.4707h-35.64v21.885h39.199v7.6904h-47.725v-64.556zm23.862 0z"/>
+           <path fill="#fff" stroke="none" id="path4397" d="m469.13 266.87q0.30762 5.4932 2.5928 8.9209 4.3506 6.416 15.337 6.416 4.9219 0 8.9648-1.4062 7.8223-2.7246 7.8223-9.7559 0-5.2734-3.2959-7.5146-3.3398-2.1973-10.459-3.8232l-8.7451-1.9775q-8.5693-1.9336-12.129-4.2627-6.1523-4.043-6.1523-12.085 0-8.7012 6.0205-14.282 6.0205-5.5811 17.051-5.5811 10.151 0 17.227 4.9219 7.1191 4.8779 7.1191 15.645h-8.2178q-0.65918-5.1856-2.8125-7.9541-3.999-5.0537-13.579-5.0537-7.7344 0-11.118 3.252-3.3838 3.252-3.3838 7.5586 0 4.7461 3.9551 6.9434 2.5928 1.4062 11.733 3.5156l9.0527 2.0654q6.5479 1.4941 10.107 4.0869 6.1523 4.5264 6.1523 13.14 0 10.723-7.8223 15.337-7.7783 4.6143-18.105 4.6143-12.041 0-18.853-6.1523-6.8115-6.1084-6.6797-16.567h8.2178zm17.666-45.483z"/>
+          </g>
+          <rect id="rect4156" height="695.02" width="695.02" stroke="#fff" y="214.85" x="72.492" stroke-width="5" fill="none"/>
+         </g>
+        </svg>
+        
+      </section>
+      <section>
+        <h3 style="font-size: 50px">&lsquo;css-loader?modules&rsquo;</h3>
+      </section>
+      <section>
+        <div class="avatars big-avatars"><img src="images/sokra.png" class="avatar"><img src="images/profile.jpg" class="avatar"><img src="images/glenmaddern.jpg" class="avatar"></div>
+        <div class="avatars big-avatars"><img src="images/joshjohnston.jpg" class="avatar"><img src="images/joshgillies.jpg" class="avatar"><img src="images/sullenor.jpg" class="avatar"></div>
+        <h4><a href="https://www.github.com/css-modules" target="_blank" style="border: 0">github.com/css-modules</a></h4>
+      </section>
+      <section>
+        <ul>
+          <li>Webpack</li>
+          <li>Browserify</li>
+          <li>JSPM</li>
+          <li>Your build tool?</li>
+        </ul>
+      </section>
+      <section data-bespoke-backdrop="mjackson">
+        <h3 style="width:650px">&ldquo;I&rsquo;m really encouraged by the work on CSS modules, though it only fixes part of the problem.&rdquo;</h3>
+        <h4>@mjackson, October 2015</h4>
+      </section>
+      <section data-bespoke-backdrop="geelen">
+        <h1>Values</h1>
+        <h3>by @glenmaddern</h3>
+      </section>
+      <section>
+        <pre class="language-css"><code>@value primary: #BF4040;
+@value secondary: #1F4F7F;
+
+.text-primary {
+  color: primary;
+}
+
+.text-secondary {
+  color: secondary;
+}
+</code></pre>
+      </section>
+      <section>
+        <pre class="language-css"><code>/* breakpoints.css */
+@value small: (max-width: 599px);
+@value medium: (min-width: 600px) and (max-width: 959px);
+@value large: (min-width: 960px);
+</code></pre>
+      </section>
+      <section>
+        <pre class="language-css"><code>/* MyComponent.css */
+@value large from "./breakpoints.css";
+
+@media large {
+  .header {
+    box-shadow: 0 0 20px secondary;
+  }
+}
+</code></pre>
+      </section>
+      <section>
+        <h1>Theming</h1>
+      </section>
+      <section>
+        <h3>i. Overriding styles</h3>
+      </section>
+      <section data-bespoke-backdrop="react">
+        <h1>react-themeable</h1>
+      </section>
+      <section>
+        <h2>Styles as props</h2>
+      </section>
+      <section>
+        <pre class="language-jsx"><code>&lt;MyComponent theme={theme} /&gt;
+</code></pre>
+      </section>
+      <section>
+        <pre style="width: 650px" class="language-css"><code>/* MyComponentTheme.css */
+.foo { color: red; }
+.foo:hover { color: green; }
+.bar { color: blue; }</code></pre>
+        <pre style="width: 650px" class="language-jsx"><code>import theme from './MyComponentTheme.css';
+&lt;MyComponent theme={theme} /&gt;
+</code></pre>
+      </section>
+      <section data-bespoke-backdrop="larrydavid">
+        <h2>Component authors</h2>
+      </section>
+      <section>
+        <pre style="font-size: 20px; line-height: 32px" class="language-jsx"><code>// Radium:
+const theme = {
+  foo: {
+    'color': 'red',
+    ':hover': { color: 'green' }
+  },
+  bar: { 'color': 'blue' }
+};
+
+const ThemedComponent = Radium(MyComponent);
+&lt;ThemedComponent theme={theme} /&gt;
+</code></pre>
+      </section>
+      <section>
+        <pre style="font-size: 20px; line-height: 32px" class="language-jsx"><code>// JSS:
+const sheet = jss.createStyleSheet({
+  foo: {
+    'color': 'red'
+  },
+  bar: {
+    'color': 'blue'
+  }
+}).attach();
+
+&lt;MyComponent theme={sheet.classes} /&gt;
+</code></pre>
+      </section>
+      <section>
+        <pre style="font-size: 20px; line-height: 32px" class="language-jsx"><code>// Inline styles:
+const theme = {
+  foo: {
+    'color': 'red'
+  },
+  bar: {
+    'color': 'blue'
+  }
+};
+
+&lt;MyComponent theme={theme} /&gt;
+</code></pre>
+      </section>
+      <section data-bespoke-backdrop="react">
+        <h3 style="font-size: 50px">ReactCSSTransitionGroup</h3>
+      </section>
+      <section>
+        <pre class="language-jsx"><code>const classes = {
+  enter: 'header__menu--enter',
+  enterActive: 'header__menu--enterActive',
+  leave: 'header__menu--leave',
+  ...
+};</code></pre>
+        <pre class="language-jsx"><code>&lt;ReactCSSTransitionGroup transitionName={classes}&gt;
+</code></pre>
+      </section>
+      <section>
+        <pre class="language-jsx"><code>const classes = {
+  enter: 'header__menu--enter',
+  enterActive: 'header__menu--enterActive',
+  leave: 'header__menu--leave',
+  ...
+};
+
+// ...Look familiar?
+</code></pre>
+      </section>
+      <section>
+        <pre class="language-css"><code>/* transitions.css */
+
+.enter {
+  opacity: 0.01;
+}
+
+.enter.enterActive {
+  opacity: 1;
+  transition: opacity 500ms ease-in;
+}
+</code></pre>
+      </section>
+      <section>
+        <pre class="language-jsx"><code>import styles from './transitions.css';</code></pre>
+        <pre class="language-jsx"><code>&lt;ReactCSSTransitionGroup transitionName={styles}&gt;
+</code></pre>
+      </section>
+      <section>
+        <h3>ii. Overriding theme variables</h3>
+      </section>
+      <section>
+        <h3 style="font-size: 50px">&hellip;Functions?</h3>
+      </section>
+      <section data-bespoke-backdrop="want"></section>
+      <section data-bespoke-backdrop="experiment"></section>
+      <section>
+        <h3 style="width: 450px">Please note: The views expressed in this presentation are not necessarily the views of the CSS Modules team</h3>
+      </section>
+      <section data-bespoke-backdrop="scared">
+        <h1>CSS Modules<br>&hellip;in JS?</h1>
+      </section>
+      <section>
+        <h3>&lsquo;style-loader!css-loader?modules&rsquo;</h3>
+      </section>
+      <section>
+        <h3>&lsquo;style-loader!css-loader?modules!another-loader&rsquo;</h3>
+      </section>
+      <section>
+        <h2>CSS Modules</h2>
+        <h3>&mdash; make a great &mdash;</h3>
+        <h2>Compilation target</h2>
+      </section>
+      <section>
+        <ul>
+          <li>First-class Webpack support</li>
+          <li>Local scoping for free</li>
+          <li>Extract CSS file with standard tooling</li>
+          <li>Focus on your API, not the tooling</li>
+        </ul>
+      </section>
+      <section data-bespoke-backdrop="andreypopp">
+        <h1>Styling</h1>
+        <h3>&mdash; by @andreypopp &mdash;</h3>
+      </section>
+      <section>
+        <pre class="language-jsx"><code>import styling from 'styling';
+import color from 'color';
+
+import { primary } from './theme';
+
+export const button = styling({
+  backgroundColor: color(primary)
+    .darken(0.1)
+    .hexString()
+});
+
+var styling = require('styling')
+</code></pre>
+      </section>
+      <section>
+        <pre class="language-jsx"><code>loaders: [
+  {
+    test: /\.style\.js/,
+    loader: styling(
+      ['style', 'css'], // loaders executed after styling
+      ['babel']        // loaders executed before styling
+    )
+  }
+]
+</code></pre>
+      </section>
+      <section>
+        <h1>jss-loader</h1>
+        <h3>&mdash; by @markdalgleish &mdash;</h3>
+      </section>
+      <section>
+        <pre class="language-jsx"><code>import { largeScreen } from './breakpoints';
+
+export default {
+  '.root': {
+    padding: 10,
+    ...largeScreen({
+      padding: 20
+    })
+  }
+};
+</code></pre>
+      </section>
+      <section>
+        <pre class="language-jsx"><code>loaders: [
+  {
+    test: /\.jss\.js/,
+    loader: 'style-loader!css-loader?modules!jss-loader'
+  }
+]
+</code></pre>
+      </section>
+      <section style="font-size: 20px">
+        <pre class="language-jsx"><code>module.exports = {
+  module: { loaders: [...] },
+  jssLoader: {
+    plugins: [
+      require('jss-nested'),
+      require('jss-extend'),
+      require('jss-camel-case'),
+      require('jss-props-sort'),
+      require('jss-px')
+    ]
+  }
+};
+</code></pre>
+      </section>
+      <section>
+        <h2>Approachability?</h2>
+      </section>
+      <section data-bespoke-backdrop="maze"></section>
+      <section data-bespoke-backdrop="experiment">
+        <h2>Experiment with us!</h2>
+      </section>
+      <section>
+        <div class="avatars"><img src="images/avatars/vjeux.png" class="avatar"><img src="images/michelebertoli.jpg" class="avatar"><img src="images/avatars/joshwnj.png" class="avatar"><img src="images/avatars/geelen.jpg" class="avatar"><img src="images/avatars/sokra.png" class="avatar"><img src="images/sullenor.jpg" class="avatar"><img src="images/avatars/joshgillies.jpg" class="avatar"><img src="images/avatars/andreypopp.png" class="avatar"><img src="images/avatars/ianobermiller.jpg" class="avatar"><img src="images/avatars/petehunt.jpg" class="avatar"><img src="images/avatars/alexlande.png" class="avatar"><img src="images/avatars/gajus.jpg" class="avatar"><img src="images/avatars/rickwong.png" class="avatar"><img src="images/avatars/blakeembrey.jpg" class="avatar"><img src="images/avatars/kof.jpg" class="avatar"><img src="images/avatars/gaearon.jpg" class="avatar"><img src="images/jaketrent.jpg" class="avatar"><img src="images/avatars/sanderspies.jpg" class="avatar"><img src="images/avatars/azazdeaz.jpg" class="avatar"><img src="images/avatars/joeybaker.jpg" class="avatar"><img src="images/avatars/ai.jpg" class="avatar"><img src="images/avatars/rofrischmann.png" class="avatar"><img src="images/avatars/nick.jpg" class="avatar"><img src="images/avatars/etoraken.jpg" class="avatar"><img src="images/avatars/casesandberg.jpg" class="avatar"><img src="images/avatars/chriskjaer.jpg" class="avatar"><img src="images/avatars/pygy.png" class="avatar"><img src="images/avatars/jozanza.gif" class="avatar"><img src="images/avatars/jhudson8.jpg" class="avatar"><img src="images/avatars/hackhat.jpg" class="avatar"><img src="images/avatars/bloodyowl.jpg" class="avatar"><img src="images/avatars/elierotenberg.png" class="avatar"></div>
+      </section>
+      <section><img src="images/profile.jpg" class="avatar"></section>
+    </article>
+    <script src="build/build.js"></script>
+  </body>
+</html>
