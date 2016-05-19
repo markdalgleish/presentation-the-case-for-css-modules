@@ -32,11 +32,14 @@ li
   background-size: auto 100%
   position: relative
   left: 3px
+  &.small
+    width: 150px
+    height: 150px
 
 .static
   background-size: contain
   background-repeat: no-repeat
-  transform: none !important
+  transform: translateZ(0) none !important
   &.bespoke-backdrop-active
     opacity: 1
 
@@ -91,12 +94,12 @@ li
   background-image: url('../images/bem.svg')
   background-size: contain
   background-repeat: no-repeat
-  transform: translateZ(0) translateX(9%) translateY(-20px) scale(1)
+  transform: translateZ(0) translateZ(0) translateX(9%) translateY(-20px) scale(1)
   &.bespoke-backdrop-active
     opacity: 1
   &.bespoke-backdrop-active,
   &.bespoke-backdrop-before
-    transform: translateZ(0) translateX(9%) translateY(-20px) scale(0.6)
+    transform: translateZ(0) translateZ(0) translateX(9%) translateY(-20px) scale(0.6)
 
 [data-bespoke-backdrop="jquery-ui-datepicker"]
   h2
@@ -145,21 +148,23 @@ li
     z-index: 1
     background: white
     .show-css-and-js.bespoke-bullet-active &
-      transform: translateX(60px)
+      transform: translateZ(0) translateX(60px)
     &:after
       content: 'CSS'
+    &.style:after
+      content: 'Style'
   .js
     background: yellow
     &:after
       content: 'JS'
     .show-css-and-js.bespoke-bullet-active &
-      transform: translateX(-60px)
+      transform: translateZ(0) translateX(-60px)
   .component
     opacity: 0
     transition: all .6s ease
     border: 1px solid #888
     background: #111
-    transform: scale(2.5)
+    transform: translateZ(0) scale(2.5)
     z-index: -1
     &:after
       content: 'Component'
@@ -170,49 +175,197 @@ li
       top: -48px
     .show-component.bespoke-bullet-active &
       opacity: 1
+  .local-scope
+    &:after
+      content: 'Local Scope'
 
 .show-component-tree
   transition: all 1.6s cubic-bezier(0.725, -0.365, 0.175, 1.000)
   &.bespoke-bullet-active
-    transform: translateY(-150px) scale(0.3)
+    transform: translateZ(0) translateY(-150px) scale(0.3)
+
+.show-bigger-component-tree
+  transition: all 2.2s cubic-bezier(0.725, -0.365, 0.175, 1.000)
+  &.bespoke-bullet-active
+    transform: translateZ(0) scale(0.5)
+
+.show-app-boundary
+  transition: all 1s cubic-bezier(0.725, -0.365, 0.175, 1.000)
+  transform-origin: 100% 300%
+  &.bespoke-bullet-active
+    transform: translateZ(0) scale(0.75)
+
+.show-style-guide-boundary
+  transition: all 1s cubic-bezier(0.725, -0.365, 0.175, 1.000)
+
+  &.bespoke-bullet-active
+    transform: translateZ(0) scale(0.65) translateX(-2800px) translateY(600px)
+
+.boundary
+  border-radius: 40px;
+  opacity: 0;
+  transition: all 0.6s ease;
+  transition-delay: .6s;
+  border: 3px solid #fff;
+  transform: translateZ(0) scale(2.5);
+  z-index: -1;
+  position: absolute;
+
+.app-boundary
+  width: 2050px;
+  height: 1370px;
+  top: 620px;
+  left: -1000px;
+  &:after
+    content: 'Application'
+    position: absolute
+    color: #fff
+    font-size: 120px;
+    top: 1172px;
+    left: 740px;
+  .show-app-boundary.bespoke-bullet-active &
+    transition-delay: 0
+    opacity: 1
+
+.style-guide-boundary
+  width: 2050px;
+  height: 1370px;
+  top: 620px;
+  left: 4500px;
+  &:after
+    content: 'Style Guide'
+    position: absolute
+    color: #fff
+    font-size: 120px;
+    top: 1172px;
+    left: 740px;
+  .show-style-guide-boundary.bespoke-bullet-active &
+    transition-delay: 0
+    opacity: 1
 
 .circles
   transition: all 1s cubic-bezier(0.725, -0.365, 0.175, 1.000)
 
-.circles--multiple-0
+.circles--multiple-0,
+.circles--multiple-8
   transition-delay: .3s
 .circles--multiple-1
+.circles--multiple-9
+  transition-delay: .35s
+.circles--multiple-2,
+.circles--multiple-10
   transition-delay: .4s
-.circles--multiple-2
+.circles--multiple-3,
+.circles--multiple-11
+  transition-delay: .45s
+.circles--multiple-4,
+.circles--multiple-12
   transition-delay: .5s
-.circles--multiple-3
+.circles--multiple-5,
+.circles--multiple-13
+  transition-delay: .55s
+.circles--multiple-6,
+.circles--multiple-14
   transition-delay: .6s
-.circles--multiple-4
+.circles--multiple-7,
+.circles--multiple-15
+  transition-delay: .65s
+.circles--multiple-16
   transition-delay: .7s
-.circles--multiple-5
+.circles--multiple-17
+  transition-delay: .75s
+.circles--multiple-18
   transition-delay: .8s
-.circles--multiple-6
+.circles--multiple-19
+  transition-delay: .85s
+.circles--multiple-20
   transition-delay: .9s
-.circles--multiple-7
+.circles--multiple-21
+  transition-delay: .95s
+.circles--multiple-22
   transition-delay: 1s
+.circles--multiple-23
+  transition-delay: 1.05s
 
 .show-component-tree.bespoke-bullet-active
   .circles--multiple-0
-    transform: translateY(500px)
+    transform: translateZ(0) translateY(500px) translateX(-500px)
   .circles--multiple-1
-    transform: translateY(500px) translateX(-500px)
+    transform: translateZ(0) translateY(500px)
   .circles--multiple-2
-    transform: translateY(500px) translateX(500px)
+    transform: translateZ(0) translateY(500px) translateX(500px)
   .circles--multiple-3
-    transform: translateY(1000px)
+    transform: translateZ(0) translateY(1000px) translateX(-1000px)
   .circles--multiple-4
-    transform: translateY(1000px) translateX(-500px)
+    transform: translateZ(0) translateY(1000px) translateX(-500px)
   .circles--multiple-5
-    transform: translateY(1000px) translateX(-1000px)
+    transform: translateZ(0) translateY(1000px)
   .circles--multiple-6
-    transform: translateY(1000px) translateX(500px)
+    transform: translateZ(0) translateY(1000px) translateX(500px)
   .circles--multiple-7
-    transform: translateY(1000px) translateX(1000px)
+    transform: translateZ(0) translateY(1000px) translateX(1000px)
+
+.show-bigger-component-tree.bespoke-bullet-active
+  .circles--multiple-8
+    transform: translateZ(0) translateY(1500px) translateX(-1500px)
+  .circles--multiple-9
+    transform: translateZ(0) translateY(1500px) translateX(-1000px)
+  .circles--multiple-10
+    transform: translateZ(0) translateY(1500px) translateX(-500px)
+  .circles--multiple-11
+    transform: translateZ(0) translateY(1500px)
+  .circles--multiple-12
+    transform: translateZ(0) translateY(1500px) translateX(500px)
+  .circles--multiple-13
+    transform: translateZ(0) translateY(1500px) translateX(1000px)
+  .circles--multiple-14
+    transform: translateZ(0) translateY(1500px) translateX(1500px)
+  .circles--multiple-15
+    transform: translateZ(0) translateY(2000px) translateX(-2000px)
+  .circles--multiple-16
+    transform: translateZ(0) translateY(2000px) translateX(-1500px)
+  .circles--multiple-17
+    transform: translateZ(0) translateY(2000px) translateX(-1000px)
+  .circles--multiple-18
+    transform: translateZ(0) translateY(2000px) translateX(-500px)
+  .circles--multiple-19
+    transform: translateZ(0) translateY(2000px)
+  .circles--multiple-20
+    transform: translateZ(0) translateY(2000px) translateX(500px)
+  .circles--multiple-21
+    transform: translateZ(0) translateY(2000px) translateX(1000px)
+  .circles--multiple-22
+    transform: translateZ(0) translateY(2000px) translateX(1500px)
+  .circles--multiple-23
+    transform: translateZ(0) translateY(2000px) translateX(2000px)
+
+.show-style-guide-boundary.bespoke-bullet-active
+  xOffset = 250
+  yOffest = 0
+  .circles--multiple-1
+    transform: translateZ(0) translateY(250px + yOffest) translateX(4000px + xOffset)
+  .circles--multiple-4
+    transform: translateZ(0) translateY(750px + yOffest) translateX(4000px + xOffset)
+  .circles--multiple-6
+    transform: translateZ(0) translateY(750px + yOffest) translateX(4500px + xOffset)
+  .circles--multiple-9
+    transform: translateZ(0) translateY(1250px + yOffest) translateX(4000px + xOffset)
+  .circles--multiple-11
+    transform: translateZ(0) translateY(1250px + yOffest) translateX(4500px + xOffset)
+  .circles--multiple-13
+    transform: translateZ(0) translateY(1250px + yOffest) translateX(5000px + xOffset)
+  .circles--multiple-15
+    transform: translateZ(0) translateY(1750px + yOffest) translateX(4000px + xOffset)
+  .circles--multiple-16
+    transform: translateZ(0) translateY(1750px + yOffest) translateX(4500px + xOffset)
+  .circles--multiple-18
+    transform: translateZ(0) translateY(1750px + yOffest) translateX(5000px + xOffset)
+  .circles--multiple-20
+    transform: translateZ(0) translateY(1750px + yOffest) translateX(5500px + xOffset)
+  .circles--multiple-22
+    transform: translateZ(0) translateY(1750px + yOffest) translateX(6000px + xOffset)
+  .circles--multiple-23
+    transform: translateZ(0) translateY(1750px + yOffest) translateX(6500px + xOffset)
 
 
 // Webpack logo stuff
@@ -228,11 +381,11 @@ li
   margin-left: -100px
   margin-top: -110px
   zoom: 3
-  transform: scale(1)
+  transform: translateZ(0) scale(1)
   opacity: 0.6
 
 .logo
-  transform: rotateX(0deg)
+  transform: translateZ(0) rotateX(0deg)
 
 // New stuff...
 
@@ -250,7 +403,7 @@ ul.minimal li:before
   background-color: black
   background-size: contain
   background-repeat: no-repeat
-  transform: none
+  transform: translateZ(0) none
   &.bespoke-backdrop-active
     opacity: 1
 
@@ -274,7 +427,7 @@ ul.minimal li:before
 
 .want
   background-image: url('../images/want.gif')
-  transform: none
+  transform: translateZ(0) none
   &.bespoke-backdrop-active
     opacity: 1
 
@@ -292,14 +445,14 @@ ul.minimal li:before
 
 .larrydavid
   background-image: url('../images/larrydavid.gif')
-  transform: none !important
+  transform: translateZ(0) none !important
   background-position: 50% 0
   &.bespoke-backdrop-active
     opacity: .6
 
 .scared
   background-image: url('../images/scared.gif')
-  transform: none !important
+  transform: translateZ(0) none !important
   background-position: 50% 0
   &.bespoke-backdrop-active
     opacity: .4
@@ -313,7 +466,7 @@ ul.minimal li:before
 
 .maze
   background-image: url('../images/maze.gif')
-  transform: none !important
+  transform: translateZ(0) none !important
   &.bespoke-backdrop-active
     opacity: 1
 
@@ -344,7 +497,7 @@ ul.minimal li:before
 .takeoff input:checked + label
   height: 156px;
   background-position: 0 100%;
-  transform: translateY(-20em);
+  transform: translateZ(0) translateY(-20em);
 .takeoff input ~ .stars
   background: url('../images/star-background.jpg')
   opacity: 0.4;
@@ -357,7 +510,7 @@ ul.minimal li:before
   height: 2000px
   transition: all 5s ease
 .takeoff input:checked ~ .stars
-  transform: translateY(200px)
+  transform: translateZ(0) translateY(200px)
   transition: all 10s ease
   transition-delay: .3s
 .takeoff input ~ .planet
@@ -367,10 +520,44 @@ ul.minimal li:before
   width: 2040px;
   height: 2040px;
   background: #222;
-  box-shadow: 0 0 100px rgba(100%, 100%, 100%, 0.5);
+  box-shadow: 0 0 50px rgba(100%, 100%, 100%, 0.5);
   border-radius: 2040px;
   z-index: -1;
   transition: all 5s ease
   transition-delay: .3s
 .takeoff input:checked ~ .planet
-  transform: translateY(400px)
+  transform: translateZ(0) translateY(400px)
+
+// Newer stuff...
+
+.aphrodite
+  background-image: url('../images/aphrodite.jpg')
+  background-position: 50% 70%
+  transform-origin: 60% 30%
+  // filter: grayscale(100%)
+  &.bespoke-backdrop-active
+    opacity: .6
+
+.jlfwong
+  background-image: url('../images/jlfwong.png')
+  background-position: 50% 70%
+  transform-origin: 60% 30%
+  filter: blur(10px)
+  &.bespoke-backdrop-active
+    opacity: .3
+
+.emoji
+  font-size: 80px;
+
+section.code-columns
+  transform: translateZ(0) translateZ(0)
+pre.left,
+pre.right
+  position: absolute;
+  width: 30%;
+  top: 5%
+  left: 50%;
+pre.left
+  transform: translateZ(0) translateX(-80%)
+pre.right
+  transform: translateZ(0) translateX(0%)

@@ -3,7 +3,7 @@ html
   head
     meta(charset='utf-8')
     meta(name='viewport', content='width=device-width, initial-scale=1, maximum-scale=1')
-    title The Case for CSS Modules
+    title First Class Styles
 
     link(rel='stylesheet', type='text/css', href='build/build.css')
 
@@ -16,10 +16,11 @@ html
       section
         img.avatar(src='images/profile.jpg')
       
-      section(data-bespoke-backdrop='lego')
-        h2 The Case
-        h3 &mdash; for &mdash;
-        h2 CSS Modules
+      section
+        ul
+          li CSS Modules
+          li Inline Styles
+          li CSS in JS
       
       section
         h3 Let&rsquo;s start at the beginning&hellip;
@@ -53,7 +54,6 @@ html
           li SMACSS
           li BEM
           li SUIT
-          li Inline styles!
 
       section
         pre.language-css(style='font-size: 30px')
@@ -87,9 +87,11 @@ html
 
       section
         ul
+          li Backbone
+          li Angular&rsquo;s directives
+          li Ember.Component
           li Web components
           li Polymer
-          li Angular&rsquo;s directives
       
       section(data-bespoke-backdrop='react')
         h1 React
@@ -212,11 +214,11 @@ html
       section
         ul
           li Server rendered CSS
-          li :hover, :focus, :active
+          li :visited, :before, :hover, :focus, etc.
           li Media queries
-          li CSS animation
+          li CSS animations
           li Psuedo classes for non-JS interactions<span class="bullet">&hellip;?</span>
-
+      
       section
         .bullet.hide-checkbox
           .bullet.show-checkbox
@@ -226,20 +228,25 @@ html
               .planet
               .stars
             h2 Checkbox hacks
-
+      
       section
         pre.language-css
           code.
-            .menu { transform: translateX(-500px) }
-
-            .toggle:checked ~ .menu { transform: none }
+            .menu {
+              transform: translateX(-100%);
+              transition: all .3s ease;
+            }
+      
+            .toggle:checked ~ .menu {
+              transform: none
+            }
       
       section
         h2 Late 2014&hellip;
 
       section(data-bespoke-backdrop='vjeux')
         h3(style='width:550px') &ldquo;CSS has fundamental flaws at scale that can be solved by writing styles in JS.&rdquo;
-        h4 @vjeux, November 2014
+        h4 @vjeux &mdash; November 2014
 
       section(data-bespoke-backdrop='css-in-js-slide')
 
@@ -266,14 +273,10 @@ html
             });
             
             export default () => (
-              &lt;div styles={styles.foo}&gt;
+              &lt;div style={styles.foo}&gt;
                 Hello, world!
               &lt;/div&gt;
             );
-
-      section
-        h2 Server rendered CSS
-        h3 &mdash; via Webpack plugin &mdash;
 
       section
         h2 but&hellip;
@@ -288,8 +291,9 @@ html
             strike Psuedo classes
 
       h2 And yet&hellip;
-
-      section(data-bespoke-backdrop='want')
+      
+      section
+        .emoji 😍
 
       section
         h3 &mdash; How do we embrace the &mdash;
@@ -365,22 +369,6 @@ html
 
             .MyComponent__bar { ... }
             .MyComponent__bar--expanded { ... }
-
-      section
-        h2 Plays really nicely<br><br>with the<br><br>CSS ecosystem
-
-      section
-        pre.language-jsx(style='font-size: 20px')
-          code.
-            loaders: [
-              {
-                test: /\.css/,
-                loader: 'style-loader!autoprefixer-loader!css-loader!less-loader'
-              }
-            ]
-
-      section
-        h2 Feels like<br><br>regular old CSS
 
       section(data-bespoke-backdrop='legobricks')
         h3(style='width: 800px; font-size: 60px; line-height: 80px') &ldquo;Block, Element, Modifying Your JavaScript Components&rdquo;
@@ -500,11 +488,11 @@ html
             .field { ... }
             .field:focus { ... }
             
-            .panel :global .transition-active-enter { ... }
+            .panel :global(.transition-active-enter) { ... }
             
 
       section(data-bespoke-backdrop='postcss-logo')
-        h2 postcss
+        h2 PostCSS
 
       section
         h2 postcss-local-scope
@@ -523,73 +511,7 @@ html
         h3(style='font-size: 50px') &lsquo;css-loader?module&rsquo;
 
       section
-        h3(style='width: 650px') &ldquo;In the future, we could start generating shared classes between components automatically, treating style re-use as an optimisation at compile time.&rdquo;
-
-      section
-        h3(style='width: 600px; text-align: left') One-to-one mapping
-        pre.language-javascript(style='width: 600px')
-          code.
-            {
-              'foo': 'MyComponent__foo'
-            }
-
-      section
-        h3(style='width: 600px; text-align: left') Many-to-one mapping?
-        pre.language-javascript(style='width: 600px')
-          code.
-            {
-              'foo': 'class_1 class_2 class_3'
-            }
-
-      section
-        .webpack-logo
-          .logo
-            .cube-inner
-              span.front
-              span.back
-              span.right
-              span.left
-              span.top
-              span.bottom
-            .cube
-              span.front
-              span.back
-              span.right
-              span.left
-              span.top
-              span.bottom
-              span.floor
-        h1 Composition
-
-      section
-        pre.language-javascript
-          code.
-            .foo {
-              composes: heading from './typography.css';
-              composes: box from './layout.css';
-              color: red;
-            }
-
-      section
-        pre.language-css
-          code.
-            /* typography.css */
-            .heading { ... }
-
-            /* layout.css */
-            .box { ... }
-
-      section
-        pre.language-javascript
-          code.
-            {
-              'foo': `MyComponent__foo
-                      Typography__heading
-                      Layout__box`
-            }
-
-      section
-        h3(style='width: 700px') &ldquo;Have you thought about writing a standard for CSS modules that others could implement? What you&rsquo;re doing could totally fix the CSS ecosystem if it&rsquo;s widely adopted.&rdquo;
+        h3(style='width: 600px') &ldquo;Have you thought about writing a standard for CSS modules that others could implement?&rdquo;
         h4 @markdalgleish &mdash; May 23, 2015
 
       section(data-bespoke-backdrop='initial-commit')
@@ -615,6 +537,11 @@ html
 
       section
         h3(style='font-size: 50px') &lsquo;css-loader?modules&rsquo;
+      
+      section
+        ul
+          li Class composition
+          li Values, i.e. shared constants
 
       section
         .avatars.big-avatars
@@ -633,330 +560,355 @@ html
           li Webpack
           li Browserify
           li JSPM
-          li Your build tool?
-
-      section(data-bespoke-backdrop='mjackson')
-        h3(style='width:650px') &ldquo;I&rsquo;m really encouraged by the work on CSS modules, though it only fixes part of the problem.&rdquo;
-        h4 @mjackson, October 2015
+          li PostCSS
+          li Babel
       
-      section(data-bespoke-backdrop='geelen')
-        h1 Values
-        h3 by @glenmaddern
+      section
+        h3 Let&rsquo;s rewind a little&hellip;
+      
+      section
+        h2 Why not CSS in JS?
 
       section
-        pre.language-css
-          code.
-            @value primary: #BF4040;
-            @value secondary: #1F4F7F;
-
-            .text-primary {
-              color: primary;
-            }
-
-            .text-secondary {
-              color: secondary;
-            }
+        ul.minimal.no-bullets
+          li
+            strike Media queries
+          li
+            strike CSS animations
+          li
+            strike Psuedo classes
+      
+      section
+        h2 Inline styles
 
       section
-        pre.language-css
-          code.
-            /* breakpoints.css */
-            @value small: (max-width: 599px);
-            @value medium: (min-width: 600px) and (max-width: 959px);
-            @value large: (min-width: 960px);
-
+        h2 CSS in JS
+        h3 &mdash; isn&rsquo;t restricted to &mdash;
+        h2 Inline Styles
+      
+      section(data-bespoke-backdrop='aphrodite')
+        h4 Khan Academy
+        h1 Aphrodite
+        h4 Jamie Wong / Emily Eisenberg
+      
       section
-        pre.language-css
+        pre.language-jsx
           code.
-            /* MyComponent.css */
-            @value large from "./breakpoints.css";
-
-            @media large {
-              .header {
-                box-shadow: 0 0 20px secondary;
+            import { StyleSheet } from 'aphrodite';
+            
+            const styles = StyleSheet.create({
+              field: {
+                margin: '0 10px',
+                ':focus': { outline: '2px solid blue' },
+                '@media (min-width: 600px)': { margin: '0 20px' }
               }
-            }
-
-      section
-        h1 Theming
-
-      section
-        h3 i. Overriding styles
-
-      section(data-bespoke-backdrop='react')
-        h1 react-themeable
-
-      section
-        h2 Styles as props
-
+            });
+        
       section
         pre.language-jsx
           code.
-            &lt;MyComponent theme={theme} /&gt;
-
-      section
-        pre.language-css(style='width: 650px')
-          code.
-            /* MyComponentTheme.css */
-            .foo { color: red; }
-            .foo:hover { color: green; }
-            .bar { color: blue; }
-        pre.language-jsx(style='width: 650px')
-          code.
-            import theme from './MyComponentTheme.css';
-            &lt;MyComponent theme={theme} /&gt;
-
-      section(data-bespoke-backdrop='larrydavid')
-        h2 Component authors
-
-      section
-        pre.language-jsx(style='font-size: 20px; line-height: 32px')
-          code.
-            // Radium:
-            const theme = {
-              foo: {
-                'color': 'red',
-                ':hover': { color: 'green' }
-              },
-              bar: { 'color': 'blue' }
-            };
-
-            const ThemedComponent = Radium(MyComponent);
-            &lt;ThemedComponent theme={theme} /&gt;
-
-      section
-        pre.language-jsx(style='font-size: 20px; line-height: 32px')
-          code.
-            // JSS:
-            const sheet = jss.createStyleSheet({
-              foo: {
-                'color': 'red'
-              },
-              bar: {
-                'color': 'blue'
-              }
-            }).attach();
-
-            &lt;MyComponent theme={sheet.classes} /&gt;
-
-      section
-        pre.language-jsx(style='font-size: 20px; line-height: 32px')
-          code.
-            // Inline styles:
-            const theme = {
-              foo: {
-                'color': 'red'
-              },
-              bar: {
-                'color': 'blue'
-              }
-            };
-
-            &lt;MyComponent theme={theme} /&gt;
-
-      section(data-bespoke-backdrop='react')
-        h3(style='font-size: 50px') ReactCSSTransitionGroup
-
+            import { css } from 'aphrodite';
+            
+            export default () =&gt; (
+              &lt;div&gt;
+                &lt;input className={css(styles.field)} /&gt;
+              &lt;/div&gt;
+            );
+      
       section
         pre.language-jsx
           code.
-            const classes = {
-              enter: 'header__menu--enter',
-              enterActive: 'header__menu--enterActive',
-              leave: 'header__menu--leave',
-              ...
-            };
-        pre.language-jsx
+            import { StyleSheetServer } from 'aphrodite';
+
+            var {html, css} = StyleSheetServer.renderStatic(() => {
+                return ReactDOMServer.renderToString(<App/>);
+            });
+      
+      section
+        pre.language-jsx(style='font-size: 20px')
           code.
-            &lt;ReactCSSTransitionGroup transitionName={classes}&gt;
-
+            return `
+              &lt;html&gt;
+                &lt;head&gt;
+                  &lt;style data-aphrodite&gt;${css.content}&lt;/style&gt;
+                &lt;/head&gt;
+                
+                &lt;body&gt;
+                  &lt;div id='app'&gt;${html}&lt;/div&gt;
+                  ...
+                &lt;/body&gt;
+              &lt;/html&gt;
+            `;
+      
+      section(data-bespoke-backdrop='jlfwong')
+        h3(style='width:450px') &ldquo;We must deliver the absolute minimum amount of CSS necessary by only sending down CSS in use by components in the server-side rendered body&rdquo;
+        h4 Jamie Wong &mdash; March 2016
+      
       section
-        pre.language-jsx
-          code.
-            const classes = {
-              enter: 'header__menu--enter',
-              enterActive: 'header__menu--enterActive',
-              leave: 'header__menu--leave',
-              ...
-            };
-
-            // ...Look familiar?
-
-      section
-        pre.language-css
-          code.
-            /* transitions.css */
-
-            .enter {
-              opacity: 0.01;
-            }
-
-            .enter.enterActive {
-              opacity: 1;
-              transition: opacity 500ms ease-in;
-            }
-
-      section
-        pre.language-jsx
-          code.
-            import styles from './transitions.css';
-        pre.language-jsx
-          code.
-            &lt;ReactCSSTransitionGroup transitionName={styles}&gt;
-
-      section
-        h3 ii. Overriding theme variables
-
-      section
-        h3(style='font-size: 50px') &hellip;Functions?
-
-      section(data-bespoke-backdrop='want')
-
-      section(data-bespoke-backdrop='experiment')
-
-      section
-        h3(style='width: 450px') Please note: The views expressed in this presentation are not necessarily the views of the CSS Modules team
-
-      section(data-bespoke-backdrop='scared')
-        h1 CSS Modules<br>&hellip;in JS?
-
-      section
-        h3 &lsquo;style-loader!css-loader?modules&rsquo;
-
-      section
-        h3 &lsquo;style-loader!css-loader?modules!another-loader&rsquo;
-
+        h2 Personal<br /><br />preference
+      
       section
         h2 CSS Modules
-        h3 &mdash; make a great &mdash;
-        h2 Compilation target
+        h3 &mdash; or &mdash;
+        h2 CSS-in-JS&hellip;
+      
+      section
+        h3(style='font-size: 52px') What do these<br />approaches have<br />in common?
 
       section
-        ul
-          li First-class Webpack support
-          li Local scoping for free
-          li Extract CSS file with standard tooling
-          li Focus on your API, not the tooling
+        h1 First Class Styles
 
-      section(data-bespoke-backdrop='andreypopp')
-        h1 Styling
-        h3 &mdash; by @andreypopp &mdash;
+      section
+        h2 Locally define styles
+        h3 &mdash; then &mdash;
+        h2 Pass directly to elements
 
       section
         pre.language-jsx
           code.
-            import styling from 'styling';
-            import color from 'color';
+            .foo { color: red }
+            
+            import styles from './Component.css';
+            &lt;div className={styles.foo} /&gt;
 
-            import { primary } from './theme';
-
-            export const button = styling({
-              backgroundColor: color(primary)
-                .darken(0.1)
-                .hexString()
+      section
+        pre.language-jsx
+          code.
+            const styles = StyleSheet.create({
+              foo: { color: 'red' }
             });
 
-            var styling = require('styling')
-
+            &lt;div style={styles.foo} /&gt;
+      
       section
-        pre.language-jsx
+        .seek-logo.small
+        br
+        h3 We've been putting this into practice<br />for the past year...
+      
+      section
+        ul
+          li 70 CSS files
+          li 782 rules
+          li 948 selectors
+          li 2,886 declarations
+          li 211 media queries
+      
+      section
+        h3(style='font-size: 52px') Our global CSS footprint?
+      
+      section.code-columns
+        pre.left.language-css(style='font-size: 6px')
           code.
-            loaders: [
-              {
-                test: /\.style\.js/,
-                loader: styling(
-                  ['style', 'css'], // loaders executed after styling
-                  ['babel']        // loaders executed before styling
-                )
-              }
-            ]
+            /* http://meyerweb.com/eric/tools/css/reset/ 
+               v2.0 | 20110126
+               License: none (public domain)
+            */
 
-      section
-        h1 jss-loader
-        h3 &mdash; by @markdalgleish &mdash;
-  
-      section
-        pre.language-jsx
+            html, body, div, span, applet, object, iframe,
+            h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+            a, abbr, acronym, address, big, cite, code,
+            del, dfn, em, img, ins, kbd, q, s, samp,
+            small, strike, strong, sub, sup, tt, var,
+            b, u, i, center,
+            dl, dt, dd, ol, ul, li,
+            fieldset, form, label, legend,
+            table, caption, tbody, tfoot, thead, tr, th, td,
+            article, aside, canvas, details, embed, 
+            figure, figcaption, footer, header, hgroup, 
+            menu, nav, output, ruby, section, summary,
+            time, mark, audio, video {
+              margin: 0;
+              padding: 0;
+              border: 0;
+              font-size: 100%;
+              font: inherit;
+              vertical-align: baseline;
+            }
+            /* HTML5 display-role reset for older browsers */
+            article, aside, details, figcaption, figure, 
+            footer, header, hgroup, menu, nav, section {
+              display: block;
+            }
+            body {
+              line-height: 1;
+            }
+            ol, ul {
+              list-style: none;
+            }
+            blockquote, q {
+              quotes: none;
+            }
+            blockquote:before, blockquote:after,
+            q:before, q:after {
+              content: '';
+              content: none;
+            }
+            table {
+              border-collapse: collapse;
+              border-spacing: 0;
+            }
+        pre.right.language-css(style='font-size: 6px')
           code.
-            import { largeScreen } from './breakpoints';
+            html {
+              font-family: @base-font-stack;
+              font-size: unit(@base-font-size, px);
+              background-color: @sk-background;
+              box-sizing: border-box;
+              min-height: 100%;
+              overflow-y: auto;
+            }
+            *,
+            *:before,
+            *:after {
+              font-family: inherit;
+              box-sizing: inherit;
+              -webkit-tap-highlight-color: rgba(0,0,0,0);
+              -webkit-tap-highlight-color: transparent; /* For some Androids */
+            }
 
-            export default {
-              '.root': {
-                padding: 10,
-                ...largeScreen({
-                  padding: 20
-                })
-              }
-            };
+            body {
+              overflow-y: hidden;
+            }
+
+            input {
+              margin: 0;
+            }
+
+            input[type=search]::-webkit-search-decoration {
+              -webkit-appearance:none;
+            }
+        
+      section
+        ul
+          li Increased authoring speed
+          li Less fear of change
+          li Maintainable by default
+          li Faster debugging
+          li Simpler onboarding
+      
+      section
+        h3(style='font-size: 42px') Easier style guide extraction
+      
+      section
+        h3
+          .bullet.show
+            .bullet.show.show-css-and-js
+              .bullet.show.show-component
+                .bullet.show.show-component-tree
+                  .bullet.show.show-bigger-component-tree
+                    .bullet.show.show-app-boundary
+                      .bullet.show.show-style-guide-boundary
+                        .boundary.app-boundary
+                        .boundary.style-guide-boundary
+                        .circles
+                          .css
+                          .js
+                          .component
+                        .circles.circles--multiple.circles--multiple-0
+                          .css
+                          .js
+                          .component
+                        .circles.circles--multiple.circles--multiple-1
+                          .css
+                          .js
+                          .component
+                        .circles.circles--multiple.circles--multiple-2
+                          .css
+                          .js
+                          .component
+                        .circles.circles--multiple.circles--multiple-3
+                          .css
+                          .js
+                          .component
+                        .circles.circles--multiple.circles--multiple-4
+                          .css
+                          .js
+                          .component
+                        .circles.circles--multiple.circles--multiple-5
+                          .css
+                          .js
+                          .component
+                        .circles.circles--multiple.circles--multiple-6
+                          .css
+                          .js
+                          .component
+                        .circles.circles--multiple.circles--multiple-7
+                          .css
+                          .js
+                          .component
+                        .circles.circles--multiple.circles--multiple-8
+                          .css
+                          .js
+                          .component
+                        .circles.circles--multiple.circles--multiple-9
+                          .css
+                          .js
+                          .component
+                        .circles.circles--multiple.circles--multiple-10
+                          .css
+                          .js
+                          .component
+                        .circles.circles--multiple.circles--multiple-11
+                          .css
+                          .js
+                          .component
+                        .circles.circles--multiple.circles--multiple-12
+                          .css
+                          .js
+                          .component
+                        .circles.circles--multiple.circles--multiple-13
+                          .css
+                          .js
+                          .component
+                        .circles.circles--multiple.circles--multiple-14
+                          .css
+                          .js
+                          .component
+                        .circles.circles--multiple.circles--multiple-15
+                          .css
+                          .js
+                          .component
+                        .circles.circles--multiple.circles--multiple-16
+                          .css
+                          .js
+                          .component
+                        .circles.circles--multiple.circles--multiple-17
+                          .css
+                          .js
+                          .component
+                        .circles.circles--multiple.circles--multiple-18
+                          .css
+                          .js
+                          .component
+                        .circles.circles--multiple.circles--multiple-19
+                          .css
+                          .js
+                          .component
+                        .circles.circles--multiple.circles--multiple-20
+                          .css
+                          .js
+                          .component
+                        .circles.circles--multiple.circles--multiple-21
+                          .css
+                          .js
+                          .component
+                        .circles.circles--multiple.circles--multiple-22
+                          .css
+                          .js
+                          .component
+                        .circles.circles--multiple.circles--multiple-23
+                          .css
+                          .js
+                          .component
 
       section
-        pre.language-jsx
-          code.
-            loaders: [
-              {
-                test: /\.jss\.js/,
-                loader: 'style-loader!css-loader?modules!jss-loader'
-              }
-            ]
-
-      section(style='font-size: 20px')
-        pre.language-jsx
-          code.
-            module.exports = {
-              module: { loaders: [...] },
-              jssLoader: {
-                plugins: [
-                  require('jss-nested'),
-                  require('jss-extend'),
-                  require('jss-camel-case'),
-                  require('jss-props-sort'),
-                  require('jss-px')
-                ]
-              }
-            };
-
+        h3 But that&rsquo;s a topic for another day&hellip;
+      
       section
-        h2 Approachability?
-
-      section(data-bespoke-backdrop='maze')
-
-      section(data-bespoke-backdrop='experiment')
-        h2 Experiment with us!
-
+        .emoji 👍
+      
       section
-        .avatars
-          img.avatar(src='images/avatars/vjeux.png')
-          img.avatar(src='images/michelebertoli.jpg')
-          img.avatar(src='images/avatars/joshwnj.png')
-          img.avatar(src='images/avatars/geelen.jpg')
-          img.avatar(src='images/avatars/sokra.png')
-          img.avatar(src='images/sullenor.jpg')
-          img.avatar(src='images/avatars/joshgillies.jpg')
-          img.avatar(src='images/avatars/andreypopp.png')
-          img.avatar(src='images/avatars/ianobermiller.jpg')
-          img.avatar(src='images/avatars/petehunt.jpg')
-          img.avatar(src='images/avatars/alexlande.png')
-          img.avatar(src='images/avatars/gajus.jpg')
-          img.avatar(src='images/avatars/rickwong.png')
-          img.avatar(src='images/avatars/blakeembrey.jpg')
-          img.avatar(src='images/avatars/kof.jpg')
-          img.avatar(src='images/avatars/gaearon.jpg')
-          img.avatar(src='images/jaketrent.jpg')
-          img.avatar(src='images/avatars/sanderspies.jpg')
-          img.avatar(src='images/avatars/azazdeaz.jpg')
-          img.avatar(src='images/avatars/joeybaker.jpg')
-          img.avatar(src='images/avatars/ai.jpg')
-          img.avatar(src='images/avatars/rofrischmann.png')
-          img.avatar(src='images/avatars/nick.jpg')
-          img.avatar(src='images/avatars/etoraken.jpg')
-          img.avatar(src='images/avatars/casesandberg.jpg')
-          img.avatar(src='images/avatars/chriskjaer.jpg')
-          img.avatar(src='images/avatars/pygy.png')
-          img.avatar(src='images/avatars/jozanza.gif')
-          img.avatar(src='images/avatars/jhudson8.jpg')
-          img.avatar(src='images/avatars/hackhat.jpg')
-          img.avatar(src='images/avatars/bloodyowl.jpg')
-          img.avatar(src='images/avatars/elierotenberg.png')
+        .emoji 😍😍😍
 
       section
         img.avatar(src='images/profile.jpg')
